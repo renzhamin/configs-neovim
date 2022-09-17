@@ -10,7 +10,8 @@ call plug#begin('~/.config/nvim/plugged')
 "     Plug 'puremourning/vimspector'
 call plug#end()
 
-let g:codesdir=$HOME . "/Codes/X"
+let g:codesdir=$HOME . "/Codes"
+let g:bindir = g:codesdir . "/X"
 filetype off
 filetype plugin indent on
 
@@ -151,42 +152,46 @@ autocmd FileType html,css EmmetInstall
 
 " Copy/Paste Output/Input
 fu UpdateInput()
-    exe "silent !xclip -o -sel clip > " . g:codesdir . "/Input.txt"
+    exe "silent !xclip -o -sel clip > " . g:bindir . "/Input.txt"
 endfu
 
 fu CopyOutput()
-    exe "silent !xclip -sel clip " . g:codesdir . "/Output.txt"
+    exe "silent !xclip -sel clip " . g:bindir . "/Output.txt"
 endfu
 
 map<silent><F4> :call UpdateInput() <CR>
 map<silent><F3> :call CopyOutput() <CR>
 
-
+let g:timing_command = "!/usr/bin/time -f '\\%es\\t\\%Mkb' " . "timeout -k " 
+let g:run_in_term_command = "!alacritty --config-file=$HOME/.config/alacritty/alacritty_no_transparency.yml --class=Program -e sh -c \"" 
 
 " Generic Compilation
 fu! Compile_Generic(...)
     exe "w"
     
-    cd `=g:codesdir`
+    cd `=g:bindir`
 
-    exe g:compile_cur_file
+    let compile_cur_file = GetCompileCommand()
+    exe compile_cur_file
     
     if v:shell_error != 0
         cd -
         return
     endif
 
+    let run_program = GetRunProgramCommand()
+    let run_program_in_term = GetRunProgramInTermCommand()
 
     if a:0 == 0
-        exe g:run_program . "<Input.txt &> Output.txt"
+        exe run_program . "<Input.txt &> Output.txt"
     elseif a:1 == 0
-        exe g:run_program . "<Input.txt > Output.txt"
+        exe run_program . "<Input.txt > Output.txt"
     elseif a:1 == 1
-        exe g:run_program_in_term
+        exe run_program_in_term
     elseif a:1 == 2
-        exe g:run_program . "<Input.txt"
+        exe run_program . "<Input.txt"
     elseif a:1 == 3
-        exe g:run_program . "<Input.txt >> Output.txt"
+        exe run_program . "<Input.txt >> Output.txt"
     endif
     
     if index( [124,125,137], v:shell_error ) >= 0

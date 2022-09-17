@@ -6,5 +6,8 @@
     },
     "diagnostic.checkCurrentLine": true,
     "java.enabled":false,
-    "clangd.enabled" : false
+    "clangd.enabled" : false,
+    "javascript.preferences.importModuleSpecifierEnding": "js",
+    "javascript.showUnused": false,
+    "typescript.showUnused": false
 }
