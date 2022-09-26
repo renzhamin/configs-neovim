@@ -6,6 +6,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'phaazon/hop.nvim'
     Plug 'szw/vim-maximizer'
     Plug 'mattn/emmet-vim'
+    Plug 'neoclide/jsonc.vim'
 "     Plug 'octol/vim-cpp-enhanced-highlight'
 "     Plug 'puremourning/vimspector'
 call plug#end()
