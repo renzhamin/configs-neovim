@@ -133,8 +133,8 @@ endfunction
 
 map <F8> :call EnableLanguageServer()<CR>
 
-map <Leader>tl :call CocAction('toggleService', g:LanguageServerName)<CR>
-map <Leader>td :call CocAction('diagnosticToggle', g:LanguageServerName)<CR>
+map <Leader>lt :call CocAction('toggleService', g:LanguageServerName)<CR>
+map <Leader>ldt :call CocAction('diagnosticToggle', g:LanguageServerName)<CR>
 
 
 " Hop
