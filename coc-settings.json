@@ -1,14 +1,27 @@
 {
-    "suggest":{
+    "suggest": {
         "noselect": false,
-        "ultisnips.directories":["UltiSnips","$HOME/.config/nvim/UltiSnips"],
-        "snipmate.enable":false
+        "ultisnips.directories": ["UltiSnips", "$HOME/.config/nvim/UltiSnips"],
+        "snipmate.enable": false
     },
     "diagnostic.checkCurrentLine": true,
-    "java.enabled":false,
-    "clangd.enabled" : false,
+    "java.enabled": false,
+    "clangd.enabled": false,
     "clangd.arguments": ["--header-insertion=never"],
     "javascript.preferences.importModuleSpecifierEnding": "js",
     "javascript.showUnused": false,
-    "typescript.showUnused": false
+    "typescript.showUnused": false,
+    "prettier.tabWidth": 4,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "jsonc",
+        "json",
+        "css",
+        "markdown",
+        "javascript",
+        "typescript",
+        "typescriptreact",
+        "javascriptreact",
+        "jsx",
+        "html"
+    ]
 }

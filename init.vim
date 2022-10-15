@@ -7,6 +7,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'szw/vim-maximizer'
     Plug 'mattn/emmet-vim'
     Plug 'neoclide/jsonc.vim'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'p00f/nvim-ts-rainbow'
 "     Plug 'octol/vim-cpp-enhanced-highlight'
 "     Plug 'puremourning/vimspector'
 call plug#end()
@@ -18,7 +20,7 @@ filetype plugin indent on
 
 "Colors for nonprogramming or config files
 colo gruvbox
-let ftToIgnore = ['cpp', 'python', 'java']
+let ftToIgnore = ['cpp', 'python', 'java', 'typescript', 'javascript']
 autocmd VimEnter * if index(ftToIgnore, &ft) < 0  | call Defaultcolor()
 
 hi CursorLineNr guibg=none
@@ -67,6 +69,7 @@ endfor
 
 "Keymapings
 
+
 "Copying and Cutting to the system clipboard
 vmap <C-c> "+y
 vmap <C-x> <C-c>gvd
@@ -74,6 +77,9 @@ vmap <C-x> <C-c>gvd
 let mapleader=','
 tnoremap <Leader><Esc> <C-\><C-n>
 " tnoremap <Esc> <C-\><C-n>
+
+"Search and replace
+map <Leader>sr :s///g<Left><Left><Left>
 
 "move between windows
 map <C-l> <C-w>l
@@ -210,3 +216,7 @@ imap<F9> <Esc> :call Compile_Generic(2) <CR>
 map <F9> :call Compile_Generic(2) <CR>
 
 lua require'hop'.setup()
+
+
+
+let g:prettier#autoformat = 1
