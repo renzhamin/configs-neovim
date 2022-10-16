@@ -1,7 +1,4 @@
-local status_ok, configs = pcall(require, "nvim-configs.configs")
-if not status_ok then
-    return
-end
+local configs = require("nvim-treesitter.configs")
 
 configs.setup {
     -- A list of parser names, or "all"
