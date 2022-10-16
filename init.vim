@@ -1,15 +1,3 @@
-call plug#begin('~/.config/nvim/plugged')
-    Plug 'https://github.com/jiangmiao/auto-pairs'
-    Plug 'junegunn/fzf.vim'
-    Plug 'gruvbox-community/gruvbox'
-    Plug 'phaazon/hop.nvim'
-    Plug 'szw/vim-maximizer'
-    Plug 'mattn/emmet-vim'
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'p00f/nvim-ts-rainbow'
-"     Plug 'puremourning/vimspector'
-call plug#end()
-
 let g:codesdir=$HOME . "/Codes"
 let g:bindir = g:codesdir . "/X"
 filetype off
