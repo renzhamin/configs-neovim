@@ -6,3 +6,5 @@ require("user.nvim-cmp")
 require("user.treesitter")
 
 require("user.lsp")
+
+require("user.autopairs")

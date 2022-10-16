@@ -13,6 +13,7 @@ local lspconfig = require("lspconfig")
 local opts = {
     on_attach = require("user.lsp.handlers").on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
+    flags = {debounce_text_changes = 5000,}
 }
 
 local function extend_opts(servername)
@@ -27,6 +28,8 @@ local function extend_opts(servername)
 end
 
 lspconfig.clangd.setup(extend_opts("clangd"))
+lspconfig.sumneko_lua.setup(extend_opts("sumneko_lua"))
+lspconfig.tsserver.setup(extend_opts("tsserver"))
+lspconfig.jsonls.setup(extend_opts("jsonls"))
 
--- This setup() function is exactly the same as lspconfig's setup function.
 -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
