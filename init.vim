@@ -1,12 +1,10 @@
 call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/jiangmiao/auto-pairs'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'junegunn/fzf.vim'
     Plug 'gruvbox-community/gruvbox'
     Plug 'phaazon/hop.nvim'
     Plug 'szw/vim-maximizer'
     Plug 'mattn/emmet-vim'
-    Plug 'neoclide/jsonc.vim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'p00f/nvim-ts-rainbow'
 "     Plug 'puremourning/vimspector'
