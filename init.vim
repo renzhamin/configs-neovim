@@ -9,7 +9,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'neoclide/jsonc.vim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'p00f/nvim-ts-rainbow'
-"     Plug 'octol/vim-cpp-enhanced-highlight'
 "     Plug 'puremourning/vimspector'
 call plug#end()
 
@@ -23,41 +22,17 @@ colo gruvbox
 let ftToIgnore = ['cpp', 'python', 'java', 'typescript', 'javascript']
 autocmd VimEnter * if index(ftToIgnore, &ft) < 0  | call Defaultcolor()
 
-hi CursorLineNr guibg=none
-hi VertSplit cterm=none gui=none guibg=none
-hi Search guibg=none guifg=#8d93a1 gui=underline
-hi snipLeadingSpaces guifg=bg
+
+" hi CursorLineNr guibg=none
+" hi VertSplit cterm=none gui=none guibg=none
+" hi Search guibg=none guifg=#8d93a1 gui=underline
+" hi snipLeadingSpaces guifg=bg
 
 
 autocmd FileType * setlocal formatoptions-=cro
 
-set wildmenu
-set path+=**
-set hidden
-set scrolloff=8
-
-" set shell=/usr/bin/fish
-set mouse=a
-set nu rnu
-" set cursorline
-set guicursor=
-set termguicolors
-
-set ignorecase
-set smartcase
-
-set statusline=\ %M\ %r\ %f 
-set statusline+=%=
-set statusline+=\ [%{getcwd()}]\ [%n]\ %p%%
-
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-
-set splitbelow splitright
-set noequalalways
-set shell=zsh
+lua require("user")
+" set path+=**
 
 " autoreload file if its changed
 autocmd Focusgained * checktime
@@ -113,7 +88,8 @@ fu Ftog()
         vert res 200 | hi VertSplit guifg=bg
     endif
 endfu
-hi VertSplit guifg=bg
+
+" hi VertSplit guifg=bg
 
 map <silent> <A-f> :MaximizerToggle <CR>
 map <silent> <A-\> :call Ftog()<CR>
@@ -144,9 +120,10 @@ map <Leader>ldt :call CocAction('diagnosticToggle', g:LanguageServerName)<CR>
 
 
 " Hop
-hi HopNextKey1 guifg=Cyan
-hi HopNextKey2 guifg=LightBlue
-hi HopNextKey guifg=Violet
+
+" hi HopNextKey1 guifg=Cyan
+" hi HopNextKey2 guifg=LightBlue
+" hi HopNextKey guifg=Violet
 
 map <Leader><Leader> <CMD>HopWord<CR>
 map <Leader>j <CMD>HopChar1<CR>
@@ -220,3 +197,4 @@ lua require'hop'.setup()
 
 
 let g:prettier#autoformat = 1
+
