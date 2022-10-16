@@ -1,15 +1,14 @@
 let g:LanguageServerName = "clangd"
 let g:LanguageServerEnablerKey = "clangd.enabled"
-let g:cppversion="20"
-let g:compile_command="!g++ -I " . g:codesdir .  "/include " . "-D LOCAL -D DBG_MACRO_NO_WARNING -fsanitize=undefined -o Program % --std=c++"
+let g:compile_command="!g++ -I " . g:codesdir . "/include" . " ${CPP_COMPILE_FLAGS} -o Program %"
 let g:timeout = "3"
 
-map<Leader>lid :call coc#config("clangd.arguments", ["--header-insertion=never"]) \| CocRestart <CR>
-map<Leader>lie :call coc#config("clangd.argmuents", ["--header-insertion=iwyu"]) \| CocRestart <CR>
+map<Leader>lhid :call coc#config("clangd.arguments", ["--header-insertion=never"]) \| CocRestart <CR>
+map<Leader>lhie :call coc#config("clangd.argmuents", ["--header-insertion=iwyu"]) \| CocRestart <CR>
 
 
 fu! GetCompileCommand()
-    return g:compile_command . g:cppversion
+    return g:compile_command
 endfu
 
 fu! GetRunProgramCommand()
