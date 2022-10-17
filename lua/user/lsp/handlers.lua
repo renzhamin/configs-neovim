@@ -32,20 +32,10 @@ M.setup = function()
     }
 
     vim.diagnostic.config(config)
-
-    --     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    --         border = "rounded",
-    --     })
-    --
-    --     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    --         border = "rounded",
-    --     })
-
 end
 
-local function lsp_highlight_document(client)
+local function lsp_highlight_document()
     -- Set autocommands conditional on server_capabilities
-    if client.server_capabilities.documentHighlight then
         vim.api.nvim_exec([[
             augroup lsp_document_highlight
             autocmd! * <buffer>
@@ -53,7 +43,6 @@ local function lsp_highlight_document(client)
             autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
             augroup END
         ]], false)
-    end
 end
 
 local opts = { noremap = true, silent = true }
@@ -90,11 +79,10 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-    if client.name == "tsserver" then
-        client.server_capabilities.documentFormattingProvider = false
-    end
     lsp_keymaps(bufnr)
-    lsp_highlight_document(client)
+    if client.server_capabilities.documentHighlight then
+        lsp_highlight_document()
+    end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
