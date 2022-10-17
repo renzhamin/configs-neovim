@@ -32,11 +32,18 @@ M.setup = function()
     }
 
     vim.diagnostic.config(config)
+
+    local opts = { noremap = true, silent = true }
+    vim.keymap.set('n', 'gl', vim.diagnostic.open_float)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '<Leader>dq', vim.diagnostic.setloclist, opts)
+
 end
 
 local function lsp_highlight_document()
     -- Set autocommands conditional on server_capabilities
-        vim.api.nvim_exec([[
+    vim.api.nvim_exec([[
             augroup lsp_document_highlight
             autocmd! * <buffer>
             autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
@@ -44,12 +51,6 @@ local function lsp_highlight_document()
             augroup END
         ]], false)
 end
-
-local opts = { noremap = true, silent = true }
-vim.keymap.set('n', 'gl', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<Leader>dq', vim.diagnostic.setloclist, opts)
 
 local function lsp_keymaps(bufnr)
     -- Enable completion triggered by <c-x><c-o>
@@ -78,10 +79,24 @@ local function lsp_keymaps(bufnr)
     vim.keymap.set('n', '<Leader>fm', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
+local formatting = require("user.formatting")
+
 M.on_attach = function(client, bufnr)
     lsp_keymaps(bufnr)
     if client.server_capabilities.documentHighlight then
         lsp_highlight_document()
+    end
+
+    for _, server in ipairs(formatting.dont_format) do
+        if server == client.name then
+            client.server_capabilities.documentFormattingProvider = false
+            break
+        end
+    end
+
+
+    if client.server_capabilities.documentFormattingProvider then
+        formatting.format_on_save(bufnr)
     end
 end
 

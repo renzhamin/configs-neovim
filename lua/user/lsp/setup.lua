@@ -1,4 +1,4 @@
-local status_ok, lspconfig, mason_lspconfig, handlers, typescript
+local status_ok, lspconfig, mason_lspconfig, handlers
 status_ok, lspconfig = pcall(require, "lspconfig")
 if not status_ok then
     print("Failed to require lspconfig in setup.lua")
@@ -22,16 +22,21 @@ local function get_options(server_name)
     local opts = {}
 
     if has_config then
-        opts = vim.tbl_deep_extend("force", ext_opts, opts)
+        opts = vim.tbl_deep_extend("force", opts, ext_opts)
     end
-    
-    opts.on_attach = opts.on_attach or handlers.on_attach
+
+    opts.basic_setup = opts.basic_setup or handlers.on_attach
     opts.capabilities = opts.capabilities or handlers.capabilities
-    
+
+    opts.on_attach = function (client, bufnr)
+        opts.basic_setup(client, bufnr)
+        if opts.extra_setup then
+            opts.extra_setup(client, bufnr)
+        end
+    end
+
     return opts
 end
-
-
 
 status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not status_ok then
