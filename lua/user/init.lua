@@ -8,3 +8,6 @@ require("user.treesitter")
 require("user.lsp")
 
 require("user.autopairs")
+
+require("user.null-ls")
+

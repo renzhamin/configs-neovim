@@ -88,15 +88,12 @@ endfu
 map <silent> <Leader>io :call SetIO()<CR><C-h><A-\>
 
 
-" Language Server
-function EnableLanguageServer()
-    call coc#config(g:LanguageServerEnablerKey,1) | CocRestart
-endfunction
 
-map <F8> :call EnableLanguageServer()<CR>
+map <Leader>de :lua vim.diagnostic.enable()<CR>
+map <Leader>dd :lua vim.diagnostic.disable()<CR>
 
-map <Leader>lt :call CocAction('toggleService', g:LanguageServerName)<CR>
-map <Leader>ldt :call CocAction('diagnosticToggle', g:LanguageServerName)<CR>
+map <Leader>ld :LspStop<CR>
+map <Leader>le :LspStart<CR>
 
 
 " Hop

@@ -74,9 +74,13 @@ return packer.startup(function(use)
     use "windwp/nvim-autopairs"
 
 
+    --- formatting
+    use "jose-elias-alvarez/null-ls.nvim"
+
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
-    if PACKER_BOOTSTRAP then
+    if packer_bootstrap then
         require("packer").sync()
     end
 
