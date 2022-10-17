@@ -1,7 +1,4 @@
-local opt = vim.opt
-
-
-local options = {
+return {
     tabstop = 4,
     shiftwidth = 4,
     expandtab = true,
@@ -9,8 +6,8 @@ local options = {
 
     wildmenu = true,
     hidden = true,
-    scrolloff=8,
-    mouse="a",
+    scrolloff = 8,
+    mouse = "a",
     nu = true,
     rnu = true,
     guicursor = "",
@@ -26,8 +23,3 @@ local options = {
 
     statusline = "%M %r %f %= [%{getcwd()}] [%n] %p%%"
 }
-
-
-for k,v in pairs(options) do
-    opt[k] = v
-end

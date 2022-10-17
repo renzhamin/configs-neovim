@@ -11,7 +11,6 @@ autocmd VimEnter * if index(ftToIgnore, &ft) < 0  | call Defaultcolor()
 
 autocmd FileType * setlocal formatoptions-=cro
 
-lua require("user")
 " set path+=**
 
 " autoreload file if its changed
@@ -172,8 +171,6 @@ map <F9> :call Compile_Generic(2) <CR>
 lua require'hop'.setup()
 
 
-
-let g:prettier#autoformat = 1
 
 "Lua snip 
 " press <Tab> to expand or jump in a snippet. These can also be mapped separately

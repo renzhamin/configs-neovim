@@ -29,8 +29,8 @@ if not status_ok then
 end
 
 
--- Have packer use a popup window
 packer.init {
+    -- Have packer use a popup window
     display = {
         open_fn = function()
             return require("packer.util").float { border = "rounded" }
@@ -41,8 +41,8 @@ packer.init {
 
 return packer.startup(function(use)
     -- My plugins here
-    use "wbthomason/packer.nvim" -- Have packer manage itself
-    use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+    use "wbthomason/packer.nvim"
+    use "nvim-lua/plenary.nvim"
     use "gruvbox-community/gruvbox"
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -52,10 +52,10 @@ return packer.startup(function(use)
     use "phaazon/hop.nvim"
 
     -- cmp
-    use "hrsh7th/nvim-cmp" -- The completion plugin
-    use "hrsh7th/cmp-buffer" -- buffer completions
-    use "hrsh7th/cmp-path" -- path completions
-    use "hrsh7th/cmp-cmdline" -- cmdline completions
+    use "hrsh7th/nvim-cmp"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-path"
+    use "hrsh7th/cmp-cmdline"
     use "saadparwaiz1/cmp_luasnip"
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-nvim-lua"
@@ -68,14 +68,10 @@ return packer.startup(function(use)
         "jose-elias-alvarez/typescript.nvim"
     }
 
-    -- Snippet Engine
     use "L3MON4D3/LuaSnip"
 
-    -- AutoPair
     use "windwp/nvim-autopairs"
 
-
-    --- formatting
     use "jose-elias-alvarez/null-ls.nvim"
 
 
