@@ -1,13 +1,21 @@
-local status_ok, lspconfig, mason_lspconfig
-status_ok, lspconfig = pcall(require,"lspconfig")
+local status_ok, lspconfig, mason_lspconfig, handlers
+status_ok, lspconfig = pcall(require, "lspconfig")
 if not status_ok then
     print("Failed to require lspconfig in setup.lua")
     return
 end
 
+status_ok, handlers = pcall(require, "user.lsp.handlers")
+if not status_ok then
+    print("Failed to require lsp.handlers")
+    return
+end
+
+handlers.setup()
+
 local opts = {
-    on_attach = require("user.lsp.handlers").on_attach,
-    capabilities = require("user.lsp.handlers").capabilities,
+    on_attach = handlers.on_attach,
+    capabilities = handlers.capabilities,
 }
 
 local function extend_opts(server_name)
@@ -21,7 +29,6 @@ local function extend_opts(server_name)
     return opts
 end
 
-
 status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
 
 
@@ -31,7 +38,7 @@ if not status_ok then
 end
 
 mason_lspconfig.setup_handlers {
-    function (server_name)
+    function(server_name)
         lspconfig[server_name].setup(extend_opts(server_name))
     end
 }
