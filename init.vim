@@ -9,12 +9,6 @@ let ftToIgnore = ['cpp', 'python', 'java', 'typescript', 'javascript']
 autocmd VimEnter * if index(ftToIgnore, &ft) < 0  | call Defaultcolor()
 
 
-" hi CursorLineNr guibg=none
-" hi VertSplit cterm=none gui=none guibg=none
-" hi Search guibg=none guifg=#8d93a1 gui=underline
-" hi snipLeadingSpaces guifg=bg
-
-
 autocmd FileType * setlocal formatoptions-=cro
 
 lua require("user")
