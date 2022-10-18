@@ -49,6 +49,7 @@ return packer.startup(function(use)
         run = ':TSUpdate',
     }
     use "p00f/nvim-ts-rainbow"
+    use "windwp/nvim-ts-autotag"
     use "phaazon/hop.nvim"
 
     -- cmp
