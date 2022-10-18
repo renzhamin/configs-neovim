@@ -6,4 +6,4 @@ for k, v in pairs(options) do
     opt[k] = v
 end
 
-require("user.plugins")
+require("user")
