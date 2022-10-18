@@ -15,6 +15,7 @@ autocmd FileType * setlocal formatoptions-=cro
 
 " autoreload file if its changed
 autocmd Focusgained * checktime
+autocmd VimLeave * set guicursor=a:ver100
 
 " Clears highlighting after these commands
 for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O', '<Esc>']
@@ -73,8 +74,6 @@ endfu
 map <silent> <A-f> :MaximizerToggle <CR>
 map <silent> <A-\> :call Ftog()<CR>
 
-
-snoremap ;; <C-j>
 
 map <silent> <F5> :exe "set ft=".&ft <CR>
 

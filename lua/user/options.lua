@@ -10,7 +10,6 @@ return {
     mouse = "a",
     nu = true,
     rnu = true,
-    guicursor = "",
     termguicolors = true,
     ignorecase = true,
     smartcase = true,
