@@ -66,7 +66,7 @@ return packer.startup(function(use)
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
-        "jose-elias-alvarez/typescript.nvim"
+        "ray-x/lsp_signature.nvim"
     }
 
     use "L3MON4D3/LuaSnip"
