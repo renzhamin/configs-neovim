@@ -1,3 +1,5 @@
+vim.cmd("colorscheme gruvbox")
+
 local hi = function(...) vim.api.nvim_set_hl(0, ...) end
 
 hi("CursorLineNr", { fg = "none" })
