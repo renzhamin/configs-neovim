@@ -108,11 +108,11 @@ fu! Compile_Generic(...)
 endfu
 
 "IO
-imap <F12> <Esc> :call Compile_Generic(0) <CR>
-map <F12> :call Compile_Generic(0) <CR>
+" imap <F12> <Esc> :call Compile_Generic(0) <CR>
+" map <F12> :call Compile_Generic(0) <CR>
 
 "Input Only
-imap<F9> <Esc> :call Compile_Generic(2) <CR>
-map <F9> :call Compile_Generic(2) <CR>
+" imap<F9> <Esc> :call Compile_Generic(2) <CR>
+" map <F9> :call Compile_Generic(2) <CR>
 
 lua require'hop'.setup()

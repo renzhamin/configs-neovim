@@ -17,6 +17,9 @@ M.compile = function()
     end
 
     local compile_command = runner.get_compile_command()
+
+    vim.cmd("silent w!")
+
     local output = vim.api.nvim_exec("!" .. compile_command, true)
 
     ok = vim.v.shell_error == 0
@@ -56,19 +59,19 @@ local run = function(suffix)
     vim.cmd("silent cd -")
 end
 
-local runner_factory = function(suffix)
+local run_factory = function(suffix)
     local redirection = suffix or " "
-    return function(suffix)
+    return function()
         run(redirection)
     end
 end
 
-M.run = runner_factory()
-M.run_with_file_output = runner_factory(" > Output.txt")
-M.run_with_file_input = runner_factory(" < Input.txt")
-M.run_with_file_input_output = runner_factory(" < Input.txt > Output.txt")
-M.run_with_file_input_output_append = runner_factory(" < Input.txt >> Output.txt")
-M.run_with_file_input_output_stderr = runner_factory(" < Input.txt &> Output.txt")
+M.run = run_factory()
+M.run_with_file_output = run_factory(" > Output.txt")
+M.run_with_file_input = run_factory(" < Input.txt")
+M.run_with_file_input_output = run_factory(" < Input.txt > Output.txt")
+M.run_with_file_input_output_append = run_factory(" < Input.txt >> Output.txt")
+M.run_with_file_input_output_stderr = run_factory(" < Input.txt &> Output.txt")
 
 
 return M
