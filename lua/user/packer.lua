@@ -18,7 +18,7 @@ local packer_bootstrap = ensure_packer()
 vim.cmd [[
 augroup packer_user_config
 autocmd!
-autocmd BufWritePost plugins.lua source <afile> | PackerSync
+autocmd BufWritePost packer.lua source <afile> | PackerSync
 augroup end
 ]]
 
@@ -40,16 +40,19 @@ packer.init {
 
 
 return packer.startup(function(use)
-    -- My plugins here
     use "wbthomason/packer.nvim"
     use "nvim-lua/plenary.nvim"
     use "gruvbox-community/gruvbox"
+
+    use "numToStr/Comment.nvim"
+
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
     }
     use "p00f/nvim-ts-rainbow"
     use "windwp/nvim-ts-autotag"
+    use "JoosepAlviste/nvim-ts-context-commentstring"
     use "phaazon/hop.nvim"
 
     -- cmp

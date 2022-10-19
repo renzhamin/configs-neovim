@@ -44,8 +44,8 @@ map <silent> <Leader>io :call SetIO()<CR><C-h><A-\>
 " hi HopNextKey2 guifg=LightBlue
 " hi HopNextKey guifg=Violet
 
-map <Leader><Leader> <CMD>HopWord<CR>
-map <Leader>j <CMD>HopChar1<CR>
+map ,, <CMD>HopWord<CR>
+"map <Leader>j <CMD>HopChar1<CR>
 
 
 "Emmet
