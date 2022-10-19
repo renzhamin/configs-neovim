@@ -69,43 +69,6 @@ endfu
 map<silent><F4> :call UpdateInput() <CR>
 map<silent><F3> :call CopyOutput() <CR>
 
-let g:timing_command = "!/usr/bin/time -f '\\%es\\t\\%Mkb' " . "timeout -k " 
-let g:run_in_term_command = "!alacritty --config-file=$HOME/.config/alacritty/alacritty_no_transparency.yml --class=Program -e sh -c \"" 
-
-" Generic Compilation
-fu! Compile_Generic(...)
-    exe "w"
-    
-    cd `=g:bindir`
-
-    let compile_cur_file = GetCompileCommand()
-    exe compile_cur_file
-    
-    if v:shell_error != 0
-        cd -
-        return
-    endif
-
-    let run_program = GetRunProgramCommand()
-    let run_program_in_term = GetRunProgramInTermCommand()
-
-    if a:0 == 0
-        exe run_program . "<Input.txt &> Output.txt"
-    elseif a:1 == 0
-        exe run_program . "<Input.txt > Output.txt"
-    elseif a:1 == 1
-        exe run_program_in_term
-    elseif a:1 == 2
-        exe run_program . "<Input.txt"
-    elseif a:1 == 3
-        exe run_program . "<Input.txt >> Output.txt"
-    endif
-    
-    if index( [124,125,137], v:shell_error ) >= 0
-        silent exe "!echo 'TLE' > Output.txt"
-    endif
-    cd -
-endfu
 
 "IO
 " imap <F12> <Esc> :call Compile_Generic(0) <CR>
