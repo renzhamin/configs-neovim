@@ -1,6 +1,3 @@
-let g:mapleader = ','
-let g:codesdir = $HOME . "/Codes"
-let g:bindir = g:codesdir . "/X"
 filetype off
 filetype plugin indent on
 
@@ -32,7 +29,6 @@ endfu
 
 " hi VertSplit guifg=bg
 
-map <silent> <A-f> :MaximizerToggle <CR>
 map <silent> <A-\> :call Ftog()<CR>
 
 
