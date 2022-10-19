@@ -20,7 +20,7 @@ M.compile = function()
 
     vim.cmd("silent w!")
 
-    local output = vim.api.nvim_exec("!" .. compile_command, true)
+    local output = vim.api.nvim_exec("!" .. compile_command, true) or " "
 
     ok = vim.v.shell_error == 0
 
@@ -28,7 +28,7 @@ M.compile = function()
 end
 
 local run = function(suffix)
-    local ok, runner, output
+    local ok, runner
 
     ok, runner = get_runner()
 
@@ -37,11 +37,17 @@ local run = function(suffix)
         return
     end
 
-    ok, output = M.compile()
+    local output = " "
 
-    if not ok then
-        vim.notify(output)
-        return
+    if runner.get_compile_command then
+        ok, output = M.compile()
+
+        if not ok then
+            vim.notify(output)
+            return
+        end
+    else
+        vim.cmd("silent w!")
     end
 
 
