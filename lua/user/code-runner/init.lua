@@ -1,3 +1,5 @@
+local opt = require("user.code-runner.options")
+
 local get_runner = function()
     local ft = "user.code-runner.settings." .. vim.bo.filetype
     local ok, runner = pcall(require, ft)
@@ -5,32 +7,6 @@ local get_runner = function()
 end
 
 local M = {}
-
-M.run = function(suffix)
-    local ok, runner, output
-
-    ok, runner = get_runner()
-
-    if not ok then
-        vim.notify("Not Implemented")
-        return
-    end
-
-    ok, output = M.compile()
-
-    if not ok then
-        vim.notify(output)
-        return
-    end
-
-    local redirection = suffix or ""
-
-    local run_command = runner.get_run_command() .. redirection
-    if (runner.get_run_command) then
-        output = output .. vim.api.nvim_exec("!" .. run_command, true)
-        vim.notify(output)
-    end
-end
 
 M.compile = function()
     local ok, runner = get_runner()
@@ -47,6 +23,52 @@ M.compile = function()
 
     return ok, output
 end
+
+local run = function(suffix)
+    local ok, runner, output
+
+    ok, runner = get_runner()
+
+    if not ok then
+        vim.notify("Not Implemented")
+        return
+    end
+
+    ok, output = M.compile()
+
+    if not ok then
+        vim.notify(output)
+        return
+    end
+
+
+    if not runner.get_run_command then
+        return
+    end
+
+    local run_command = runner.get_run_command() .. suffix
+
+    vim.api.nvim_set_current_dir(opt.bin_dir)
+
+    output = output .. vim.api.nvim_exec("!" .. run_command, true)
+    vim.notify(output)
+
+    vim.cmd("silent cd -")
+end
+
+local runner_factory = function(suffix)
+    local redirection = suffix or " "
+    return function(suffix)
+        run(redirection)
+    end
+end
+
+M.run = runner_factory()
+M.run_with_file_output = runner_factory(" > Output.txt")
+M.run_with_file_input = runner_factory(" < Input.txt")
+M.run_with_file_input_output = runner_factory(" < Input.txt > Output.txt")
+M.run_with_file_input_output_append = runner_factory(" < Input.txt >> Output.txt")
+M.run_with_file_input_output_stderr = runner_factory(" < Input.txt &> Output.txt")
 
 
 return M
