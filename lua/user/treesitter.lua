@@ -1,6 +1,4 @@
-local configs = require("nvim-treesitter.configs")
-
-configs.setup {
+local config = {
     -- A list of parser names, or "all"
     ensure_installed = { "c", "lua" },
 
@@ -53,3 +51,5 @@ configs.setup {
         enable = true
     }
 }
+
+return config
