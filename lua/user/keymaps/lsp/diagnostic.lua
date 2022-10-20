@@ -1,8 +1,10 @@
 local ks = vim.keymap.set
 local dg = vim.diagnostic
 
-ks('n', '<Leader>de', function() dg.enable(0) end)
-ks('n', '<Leader>dd', function() dg.disable(0) end)
+ks('n', '<Leader>de', function() dg.enable() end)
+ks('n', '<Leader>dd', function() dg.disable() end)
+ks('n', '<Leader>dbe', function() dg.enable(0) end)
+ks('n', '<Leader>dbd', function() dg.disable(0) end)
 
 ks('n', 'gl', dg.open_float)
 ks('n', '[d', dg.goto_prev)
