@@ -13,7 +13,7 @@ if not status_ok then
 end
 
 
-require("luasnip/loaders/from_snipmate").lazy_load({ paths = "./snippets" })
+require("luasnip/loaders/from_snipmate").lazy_load()
 
 
 local kind_icons = {
