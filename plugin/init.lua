@@ -1,5 +1,5 @@
 local opt = vim.opt
-local options = require("user.options")
+local options = require("user.options").vim_options
 
 
 for k, v in pairs(options) do

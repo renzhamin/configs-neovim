@@ -14,12 +14,12 @@ end
 local packer_bootstrap = ensure_packer()
 
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
+-- Autocommand that reloads neovim whenever you save the packer.lua file
 vim.cmd [[
-augroup packer_user_config
-autocmd!
-autocmd BufWritePost packer.lua source <afile> | PackerSync
-augroup end
+    augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost packer.lua source <afile> | PackerSync
+    augroup end
 ]]
 
 -- Use a protected call so we don't error out on first use
@@ -53,7 +53,6 @@ return packer.startup(function(use)
     use "p00f/nvim-ts-rainbow"
     use "windwp/nvim-ts-autotag"
     use "JoosepAlviste/nvim-ts-context-commentstring"
-    use "phaazon/hop.nvim"
 
     -- cmp
     use "hrsh7th/nvim-cmp"

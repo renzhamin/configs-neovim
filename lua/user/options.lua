@@ -1,4 +1,6 @@
-return {
+local M = {}
+
+M.vim_options = {
     tabstop = 4,
     shiftwidth = 4,
     expandtab = true,
@@ -20,5 +22,15 @@ return {
     equalalways = false,
     shell = "zsh",
 
-    statusline = "%M %r %f %= [%{getcwd()}] [%n] %p%%"
+    statusline = "%M %r %f %= [%{getcwd()}] [%n] %p%%",
+
+    winminwidth = 0,
+    winminheight = 0,
 }
+
+M.custom_options = {
+    main_win_size = 76,
+}
+
+
+return M
