@@ -1,0 +1,38 @@
+snippet algo_djikstra
+	#define inf 1e17
+	const int mx=1e5+1;
+
+	struct node {
+		ll V,W;
+		bool operator < (const node &a ) const{
+			return a.W < W;
+		}
+	};
+
+	ll d[mx];
+	vector<node>adj[mx];
+	bool vis[mx];
+
+	void djikstra(int start,int n){
+		fill(d,d+n+1,inf);
+		memset(vis,0,sizeof(vis));
+		priority_queue<node>q;
+		q.push({start,0});
+		d[start]=0;
+		ll u,w,v,tmp;
+		while(!q.empty()){
+			u=q.top().V;
+			w=q.top().W; 
+			q.pop();
+			if(vis[u]) continue; 
+			vis[u]=1;
+			for(auto &[v,W]:adj[u]){
+				if(vis[v]) continue;
+				tmp = w + W; 
+				if(tmp < d[v]){
+					d[v] = tmp;
+					q.push({v,tmp});
+				}
+			}
+		}
+	}

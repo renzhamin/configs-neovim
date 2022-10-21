@@ -1,0 +1,23 @@
+snippet algo_bigmod
+	ll BigMod(ll base,ll power,ll mod){
+		ll result=1;
+		while(power){
+			if(power&1)
+				result=(result*base)%mod;
+			base=(base*base)%mod;
+			power>>=1LL;
+		}
+		return result;
+	}
+
+snippet algo_mulmod
+	ll mulmod(ll a,ll b,ll mod){
+		ll result = 0; a%=mod;
+		while(b){
+			if(b&1) 
+				result = (result+a)%mod ;
+			a=(a<<1LL)%mod;
+			b>>=1LL;
+		}
+		return result%mod ;
+	}

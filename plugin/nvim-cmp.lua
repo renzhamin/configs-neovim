@@ -12,7 +12,9 @@ if not status_ok then
     return
 end
 
-require("luasnip/loaders/from_vscode").lazy_load({ paths = "./snippets" })
+
+require("luasnip/loaders/from_snipmate").lazy_load({ paths = "./snippets" })
+
 
 local kind_icons = {
     Text = "",

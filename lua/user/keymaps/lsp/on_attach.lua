@@ -7,8 +7,6 @@ local function lsp_keymaps(bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    -- Mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
     ks('n', 'gD', lsp_buf.declaration, bufopts)
     ks('n', 'gd', lsp_buf.definition, bufopts)
     ks('n', 'K', lsp_buf.hover, bufopts)

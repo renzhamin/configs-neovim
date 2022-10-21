@@ -11,10 +11,10 @@ ks('v', '<C-x>', '<C-c>gvd', { remap = true })
 ks('', '<Leader>sr', ':s///g' .. string.rep('<Left>', 3))
 
 --move between windows
-for _, k in pairs({ 'h', 'l', 'j', 'k' }) do
-    -- map <C-k> to <C-w>k
-    ks('n', '<C-' .. k .. '>', '<C-w>' .. k)
-end
+--[[ for _, k in pairs({ 'h', 'l', 'j', 'k' }) do ]]
+--[[     -- map <C-k> to <C-w>k ]]
+--[[     ks('n', '<C-' .. k .. '>', '<C-w>' .. k) ]]
+--[[ end ]]
 
 -- Quiting
 ks('', '<Leader>q', ':q!<CR>')
@@ -43,7 +43,7 @@ end
 
 
 -- useful when multiple filetypes are in buffer
-ks('n', '<F5>', ':exe "set ft=".&ft<CR>', {silent=true})
+ks('n', '<F5>', ':exe "set ft=".&ft<CR>', { silent = true })
 
 -- indent whole file
 ks('n', '<Leader>ii', 'gg=G<C-o>')
