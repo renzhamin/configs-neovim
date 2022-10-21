@@ -7,7 +7,7 @@ if not status_ok then
 end
 
 
-local args = require("user.null-ls")
+local args = require("user.plugins.null-ls")
 
 local format_sources = require("user.formatting").sources
 
