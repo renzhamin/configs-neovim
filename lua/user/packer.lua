@@ -84,6 +84,7 @@ return packer.startup(function(use)
         branch = '0.1.x',
     }
 
+    use "folke/which-key.nvim"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

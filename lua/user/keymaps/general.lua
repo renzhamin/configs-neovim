@@ -1,6 +1,8 @@
 local ks = vim.keymap.set
 local silent = { silent = true }
 
+ks('n', '<Leader>ss', ":source %<CR>", { desc = "source file" })
+
 -- Copying and Cutting to the system clipboard
 ks('v', '<C-c>', '"+y')
 ks('v', '<C-x>', '<C-c>gvd', { remap = true })

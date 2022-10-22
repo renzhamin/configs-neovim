@@ -1,25 +1,6 @@
 local action_layout = require("telescope.actions.layout")
 
-require("telescope").setup {
-
-    pickers = {
-
-        find_files = {
-            layout_config = {
-                preview_width = .5,
-            },
-
-            previewer = false,
-        },
-
-        live_grep = {
-            layout_config = {
-                preview_width = .6,
-            },
-            theme = "ivy",
-        },
-
-    },
+local config = {
 
     defaults = {
 
@@ -39,4 +20,6 @@ require("telescope").setup {
     }
 }
 
-vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
+config = vim.tbl_deep_extend("force", config, require("user.plugins.telescope"))
+
+require("telescope").setup(config)
