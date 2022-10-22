@@ -1,5 +1,6 @@
 local ks = vim.keymap.set
 local lsp_buf = vim.lsp.buf
+local ts = require("telescope.builtin")
 
 local function lsp_keymaps(bufnr)
     local bufopts = { buffer = bufnr }
@@ -20,10 +21,10 @@ local function lsp_keymaps(bufnr)
     ks('n', '<Leader>D', lsp_buf.type_definition, bufopts)
     ks('n', '<Leader>rn', lsp_buf.rename, bufopts)
     ks({ 'n', 'v' }, '<Leader>ca', lsp_buf.code_action, bufopts)
-    ks({ 'n' }, '<Leader>qf', function()
+    ks({ 'n' }, '<Leader>cA', function()
         lsp_buf.code_action({ apply = true })
     end, bufopts)
-    ks('n', '<Leader>gr', lsp_buf.references, bufopts)
+    ks('n', '<Leader>gr', ts.lsp_references, bufopts)
     ks('n', '<Leader>fm', function() lsp_buf.format { async = true } end, bufopts)
 end
 
