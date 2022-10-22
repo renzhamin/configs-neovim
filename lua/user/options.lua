@@ -29,7 +29,7 @@ M.vim_options = {
 }
 
 M.custom_options = {
-    main_win_size = 76,
+    main_win_size = 80,
 }
 
 

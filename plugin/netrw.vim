@@ -69,12 +69,5 @@ endfun
 " Close Netrw if it's the only buffer open
 autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw" || &buftype == 'quickfix' |q|endif
 
-" Make netrw act like a project Draw
-augroup ProjectDrawer
-	autocmd!
-	" Don't open Netrw
-	autocmd VimEnter ~/.config/joplin/tmp/*,/tmp/calcurse*,~/.calcurse/notes/*,~/vimwiki/*,*/.git/COMMIT_EDITMSG let b:noNetrw=1
-	autocmd VimEnter * :call NetrwOnBufferOpen()
-augroup END
  
 let g:NetrwIsOpen=1

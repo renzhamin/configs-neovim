@@ -42,7 +42,8 @@ packer.init {
 return packer.startup(function(use)
     use "wbthomason/packer.nvim"
     use "nvim-lua/plenary.nvim"
-    use "gruvbox-community/gruvbox"
+    --[[ use "gruvbox-community/gruvbox" ]]
+    use "sainnhe/gruvbox-material"
 
     use "numToStr/Comment.nvim"
 

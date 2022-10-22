@@ -1,9 +1,8 @@
 filetype off
 filetype plugin indent on
 
-"Colors for nonprogramming or config files
-let ftToIgnore = ['cpp', 'python', 'java', 'typescript', 'javascript']
-autocmd VimEnter * if index(ftToIgnore, &ft) < 0  | call Defaultcolor()
+" let ftToIgnore = ['cpp', 'python', 'java', 'typescript', 'javascript']
+" autocmd VimEnter * if index(ftToIgnore, &ft) < 0  | call Defaultcolor()
 
 
 " set path+=**
