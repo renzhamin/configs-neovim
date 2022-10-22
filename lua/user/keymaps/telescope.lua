@@ -8,4 +8,5 @@ end
 
 ks('n', 'f', builtins.find_files, { desc = "find files" })
 ks('n', 'g', builtins.live_grep, { desc = "live grep" })
-ks('n', 'b', builtins.builtin, { desc = "show builtins" })
+ks('n', 'b', builtins.builtin, { desc = "builtins" })
+ks('n', 'r', builtins.registers, { desc = "registers" })

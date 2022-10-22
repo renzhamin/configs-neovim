@@ -10,3 +10,10 @@ vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
 
 require("user")
+
+require("which-key").setup {
+    plugins = {
+        marks = false,
+        registers = false,
+    }
+}
