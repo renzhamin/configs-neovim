@@ -53,8 +53,8 @@ cmp.setup({
     },
 
     --[[ window = {
-        completion = cmp.config.window,
-        documentation = cmp.config.window,
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
     }, ]]
 
     mapping = cmp.mapping.preset.insert({
@@ -124,10 +124,10 @@ cmp.setup({
     },
 
     sources = {
-        { group_index = 1, name = 'nvim_lsp', },
-        { group_index = 2, name = 'luasnip', },
-        { group_index = 3, name = 'buffer', },
-        { group_index = 4, name = 'path', },
+        { name = 'nvim_lsp', priority = 15, keyword_length = 4, max_item_count = 4 },
+        { name = 'luasnip', priority = 5, keyword_length = 3 },
+        { name = 'buffer', priority = 0, keyword_length = 4 },
+        { name = 'path', priority = -5 },
     },
 
     confirm_opts = {
@@ -139,26 +139,33 @@ cmp.setup({
 
 cmp.setup.filetype("lua", {
     sources = {
-        { group_index = 1, name = 'nvim_lua' },
-        { group_index = 2, name = 'nvim_lsp', },
-        { group_index = 3, name = 'luasnip', },
-        { group_index = 4, name = 'buffer', },
-        { group_index = 5, name = 'path', },
+        { name = 'nvim_lua', priority = 20, max_item_count = 5 },
+        { name = 'nvim_lsp', priority = 15, keyword_length = 4, max_item_count = 4 },
+        { name = 'buffer', priority = 10 },
+        { name = 'luasnip', priority = 0 },
+        { name = 'path', priority = -5 },
+    }
+})
+
+cmp.setup.filetype("cpp", {
+    sources = {
+        { name = 'luasnip', priority = 100, keyword_length = 3 },
+        { name = 'buffer', priority = 5, keyword_length = 4 },
+        { name = 'path', priority = -5 },
     }
 })
 
 cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-        { name = 'buffer' }
+        { name = 'buffer', keyword_length = 4 }
     }
 })
 
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-        { name = 'path' }
-    }, {
-        { name = 'cmdline' }
-    })
+    sources = {
+        { name = 'cmdline', priority = 10 },
+        { name = 'path', keyword_length = 4 },
+    }
 })

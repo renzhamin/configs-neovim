@@ -4,7 +4,7 @@ local cmp = require("cmp")
 local get_config = cmp.get_config
 
 
-M.toggle = function(name, group_index)
+M.toggle = function(name, args)
 
     local new_sources = {}
     local target_source = nil
@@ -18,7 +18,9 @@ M.toggle = function(name, group_index)
     end
 
     if not target_source then
-        table.insert(new_sources, { name = name, group_index = group_index })
+        target_source = { name = name }
+        vim.tbl_deep_extend("force", target_source, args)
+        table.insert(new_sources, target_source)
     end
 
     cmp.setup.filetype(vim.bo.filetype, { sources = new_sources })
@@ -26,7 +28,7 @@ M.toggle = function(name, group_index)
 end
 
 M.toggle_lsp = function()
-    M.toggle("nvim_lsp", 1)
+    M.toggle("nvim_lsp", { priority = 15, keyword_length = 4, max_item_count = 4 })
 end
 
 return M
