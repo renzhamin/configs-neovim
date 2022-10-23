@@ -12,6 +12,8 @@ M.setup = function()
     })
 
     require "lsp_signature".setup({
+        floating_window = false,
+        toggle_key = '<M-s>',
         bind = true, -- This is mandatory, otherwise border config won't get registered.
         handler_opts = {
             border = "rounded"
