@@ -51,11 +51,14 @@ cmp.setup({
             luasnip.lsp_expand(args.body)
         end,
     },
-    window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-    },
+
+    --[[ window = {
+        completion = cmp.config.window,
+        documentation = cmp.config.window,
+    }, ]]
+
     mapping = cmp.mapping.preset.insert({
+
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
@@ -95,7 +98,6 @@ cmp.setup({
             end
         end, { "i", "s" })
 
-
     }),
 
 
@@ -121,15 +123,12 @@ cmp.setup({
         end,
     },
 
-
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lua' },
-        { name = 'luasnip' },
-        { name = 'path' },
-    }, {
-        { name = 'buffer' },
-    }),
+    sources = {
+        { group_index = 1, name = 'nvim_lsp', },
+        { group_index = 2, name = 'luasnip', },
+        { group_index = 3, name = 'buffer', },
+        { group_index = 4, name = 'path', },
+    },
 
     confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,
@@ -137,16 +136,17 @@ cmp.setup({
     },
 })
 
--- Set configuration for specific filetype.
--- cmp.setup.filetype('gitcommit', {
---     sources = cmp.config.sources({
---         { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
---     }, {
---         { name = 'buffer' },
---     })
--- })
 
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.filetype("lua", {
+    sources = {
+        { group_index = 1, name = 'nvim_lua' },
+        { group_index = 2, name = 'nvim_lsp', },
+        { group_index = 3, name = 'luasnip', },
+        { group_index = 4, name = 'buffer', },
+        { group_index = 5, name = 'path', },
+    }
+})
+
 cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
@@ -154,7 +154,6 @@ cmp.setup.cmdline({ '/', '?' }, {
     }
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
