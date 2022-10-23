@@ -15,8 +15,5 @@ wk.register({
         t = {
             name = "Telescope",
         },
-        l = {
-            name = "LSP",
-        },
     }
 })

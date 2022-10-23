@@ -4,8 +4,9 @@ local silent = { silent = true }
 ks('n', '<Leader>ss', ":source %<CR>", { silent = true, desc = "source file" })
 
 -- Copying and Cutting to the system clipboard
-ks('v', '<C-S-c>', '"+y')
-ks('v', '<C-S-x>', '<C-c>gvd', { remap = true })
+
+ks('v', '<C-c>', '"+y')
+ks('v', '<C-x>', '<C-c>gvd', { remap = true })
 
 ks('t', '<Esc>', '<C-\\><C-n>')
 
@@ -35,7 +36,7 @@ ks('v', '<C-A-k>', ":m '<-2<CR>gv=gv", silent)
 
 -- Clear highlighting after these keypresses
 for _, c in ipairs({ 'a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O', '<Esc>' }) do
-    vim.keymap.set('n', c, ':noh<CR>' .. c, silent)
+    ks('n', c, ':noh<CR>' .. c, silent)
 end
 
 
