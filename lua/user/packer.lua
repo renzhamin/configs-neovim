@@ -40,6 +40,7 @@ packer.init {
 
 
 return packer.startup(function(use)
+    use "nvim-tree/nvim-tree.lua"
     use "wbthomason/packer.nvim"
     use "nvim-lua/plenary.nvim"
 

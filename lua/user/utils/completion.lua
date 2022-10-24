@@ -18,8 +18,8 @@ M.toggle = function(name, args)
     end
 
     if not target_source then
-        target_source = { name = name }
-        vim.tbl_deep_extend("force", target_source, args)
+        target_source = args
+        target_source.name = name
         table.insert(new_sources, target_source)
     end
 

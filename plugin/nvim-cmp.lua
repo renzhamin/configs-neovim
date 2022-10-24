@@ -139,7 +139,7 @@ cmp.setup({
 
 cmp.setup.filetype("lua", {
     sources = {
-        { name = 'nvim_lua', priority = 20, max_item_count = 5 },
+        { name = 'nvim_lua', priority = 20 },
         { name = 'nvim_lsp', priority = 15, keyword_length = 4, max_item_count = 4 },
         { name = 'buffer', priority = 10 },
         { name = 'luasnip', priority = 0 },

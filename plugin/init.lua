@@ -17,3 +17,5 @@ require("which-key").setup {
         registers = false,
     }
 }
+
+require("nvim-tree").setup()
