@@ -3,8 +3,7 @@ local runner = require("user.code-runner")
 
 local modes = { 'n', 'i' }
 
-ks(modes, '<F10>', runner.run_with_file_input)
-ks(modes, '<F11>', runner.run_with_file_input_output_stderr)
 ks(modes, '<F12>', runner.run_with_file_input_output)
-
-ks(modes, '<F2>', runner.run_in_terminal)
+ks(modes, '<F24>', runner.run_with_file_input_output_stderr) -- S-F12
+ks(modes, '<F36>', runner.run_with_file_input) -- C-F12
+ks(modes, '<F48>', runner.run_in_terminal) -- C-S-F12
