@@ -99,6 +99,14 @@ return packer.startup(function(use)
 
     use "folke/which-key.nvim"
 
+
+    use {
+        "mfussenegger/nvim-dap",
+        "rcarriga/nvim-dap-ui",
+        'theHamsta/nvim-dap-virtual-text',
+        "jbyuki/one-small-step-for-vimkind",
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
