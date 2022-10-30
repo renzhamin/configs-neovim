@@ -52,10 +52,13 @@ return packer.startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
     }
+    use "windwp/nvim-autopairs"
     use "p00f/nvim-ts-rainbow"
     use "windwp/nvim-ts-autotag"
     use "JoosepAlviste/nvim-ts-context-commentstring"
 
+    -- snippet engine
+    use "L3MON4D3/LuaSnip"
     -- cmp
     use "hrsh7th/nvim-cmp"
     use "hrsh7th/cmp-buffer"
@@ -70,12 +73,11 @@ return packer.startup(function(use)
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
-        "ray-x/lsp_signature.nvim"
+        "ray-x/lsp_signature.nvim",
+        "jose-elias-alvarez/null-ls.nvim"
     }
 
-    use "L3MON4D3/LuaSnip"
 
-    use "windwp/nvim-autopairs"
 
     use({
         "kylechui/nvim-surround",
@@ -87,19 +89,19 @@ return packer.startup(function(use)
         end
     })
 
-    use "jose-elias-alvarez/null-ls.nvim"
 
 
     use {
         "nvim-telescope/telescope.nvim",
         branch = '0.1.x',
     }
-
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
 
     use "folke/which-key.nvim"
 
 
+    -- DAP
     use {
         "mfussenegger/nvim-dap",
         "rcarriga/nvim-dap-ui",
