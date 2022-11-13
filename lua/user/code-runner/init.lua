@@ -47,8 +47,6 @@ local run = function(suffix)
             vim.notify(output)
             return
         end
-    else
-        vim.cmd("silent w!")
     end
 
 
@@ -62,8 +60,9 @@ local run = function(suffix)
 
     output = output .. vim.api.nvim_exec("!" .. run_command, true)
     vim.notify(output)
-
     vim.cmd("silent cd -")
+    vim.cmd("silent w!")
+    vim.cmd("%y+")
 end
 
 M.run_in_terminal = function()
