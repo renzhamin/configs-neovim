@@ -12,7 +12,7 @@ M.get_compile_command = function()
 end
 
 M.get_run_command = function()
-    return string.format("%s %d %d %s/Program", opt.timing_command, opt.timeout, opt.timeout, opt.bin_dir)
+    return string.format("%s %s %s %s/Program", opt.timing_command, opt.timeout, opt.timeout, opt.bin_dir)
 end
 
 return M
