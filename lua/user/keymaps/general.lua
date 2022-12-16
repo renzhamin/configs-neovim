@@ -12,6 +12,7 @@ ks('t', '<Esc>', '<C-\\><C-n>')
 
 -- Search and replace
 ks('', '<Leader>sr', ':s///g' .. string.rep('<Left>', 3))
+ks('', '<leader>sw', ':%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>')
 
 
 -- Quiting
