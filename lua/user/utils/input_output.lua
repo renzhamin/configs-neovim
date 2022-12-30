@@ -30,7 +30,7 @@ M.toggle_sidebar = function()
     local main_win_size = require("user.options").custom_options.main_win_size or 76
 
     if vim.fn.winwidth(0) > main_win_size then
-        if vim.bo.filetype == "cpp" and vim.fn.bufwinnr("Output.txt") == -1 then
+        if vim.fn.bufwinnr("Output.txt") == -1 then
             M.set_input_output_in_sidebar()
         end
         M.show_sidebar()

@@ -1,10 +1,5 @@
 local M = {}
 
-local compile_command = string.format("python3 ")
-
-M.get_run_command = function()
-    local filename = vim.fn.expand("%:p")
-    return compile_command .. filename
-end
+M.run_command = "python " .. vim.fn.expand("%:p")
 
 return M

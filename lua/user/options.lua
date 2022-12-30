@@ -20,13 +20,16 @@ M.vim_options = {
     splitright = true,
 
     equalalways = false,
-    shell = "zsh",
 
     statusline = "%M %r %f %= [%{getcwd()}] [%n] %p%%",
 
     winminwidth = 0,
     winminheight = 0,
 }
+
+if vim.fn.has('unix') == 1 and vim.fn.executable('zsh') == 1 then
+    M.shell = "zsh"
+end
 
 M.custom_options = {
     main_win_size = 80,

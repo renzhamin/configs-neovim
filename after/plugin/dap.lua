@@ -21,7 +21,7 @@ dap.configurations.lua = {
 dap.adapters.cppdbg = {
     id = 'cppdbg',
     type = 'executable',
-    command = os.getenv('HOME') .. '.local/share/nvim/mason/bin/OpenDebugAD7',
+    command = vim.fn.expand('~') .. '.local/share/nvim/mason/bin/OpenDebugAD7',
 }
 
 dap.configurations.cpp = {

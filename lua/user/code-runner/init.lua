@@ -16,10 +16,9 @@ M.compile = function()
         return
     end
 
-    local compile_command = runner.get_compile_command()
-
     vim.cmd("silent w!")
 
+    local compile_command = runner.compile_command .. " " .. vim.fn.expand("%")
     local output = vim.api.nvim_exec("!" .. compile_command, true)
 
     ok = vim.v.shell_error == 0
@@ -40,21 +39,23 @@ local run = function(suffix)
 
     output = " "
 
-    if runner.get_compile_command then
+    if runner.compile_command then
         ok, output = M.compile()
 
         if not ok then
             vim.notify(output)
             return
         end
+    else
+        vim.cmd("silent w!")
     end
 
 
-    if not runner.get_run_command then
+    if not runner.run_command then
         return
     end
 
-    local run_command = runner.get_run_command() .. suffix
+    local run_command = runner.run_command .. suffix
 
     vim.api.nvim_set_current_dir(opt.bin_dir)
 
@@ -75,12 +76,12 @@ M.run_in_terminal = function()
         return
     end
 
-    if not runner.get_run_command then
+    if not runner.run_command then
         vim.notify("Not Implemented")
         return
     end
 
-    local run_cmd = string.format("%s %s ;read \"", opt.run_in_terminal_command, runner.get_run_command())
+    local run_cmd = string.format("%s %s ;read \"", opt.run_in_terminal_command, runner.run_command)
 
     vim.cmd("!" .. run_cmd)
 end
