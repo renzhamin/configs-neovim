@@ -13,7 +13,9 @@ M.precompile_dbg_command = string.format("g++ -x c++-header %s %s/include/dbg.h"
 
 M.compile_command = string.format("g++ -I %s/include %s -o %s/Program", opt.codes_dir, M.flags, opt.bin_dir)
 
-M.run_command = string.format("%s %s %s %s/Program", opt.timing_command, opt.timeout, opt.timeout, opt.bin_dir)
+M.get_run_command = function()
+    return string.format("%s %s %s %s/Program", opt.timing_command, opt.timeout, opt.timeout, opt.bin_dir)
+end
 
 M.precompile_dbg = function()
     local output = vim.api.nvim_exec("! " .. M.precompile_dbg_command, true)

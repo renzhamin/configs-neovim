@@ -51,11 +51,11 @@ local run = function(suffix)
     end
 
 
-    if not runner.run_command then
+    if not runner.get_run_command then
         return
     end
 
-    local run_command = runner.run_command .. suffix
+    local run_command = runner.get_run_command() .. suffix
 
     vim.api.nvim_set_current_dir(opt.bin_dir)
 
