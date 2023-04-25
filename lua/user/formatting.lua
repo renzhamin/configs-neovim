@@ -3,12 +3,19 @@ local M = {}
 -- disable formatting for these language servers
 M.dont_format = {
     "tsserver",
-    "jsonls",
 }
 
 -- null-ls builtin formatting sources
 M.sources = {
-    "prettierd",
+    {
+        name = "prettierd",
+        disabled_filetypes = { "json", "jsonc" },
+        extra_args = {
+            "--no-semi",
+            "--tab-width=4",
+            "--config-precedence=prefer-file"
+        }
+    }
 }
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
