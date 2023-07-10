@@ -115,10 +115,12 @@ return packer.startup(function(use)
         "jbyuki/one-small-step-for-vimkind",
     }
 
+    -- copilot
+    use { "zbirenbaum/copilot.lua" }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
         require("packer").sync()
     end
-
 end)
