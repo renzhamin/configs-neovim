@@ -5,3 +5,4 @@ local hi = function(...) vim.api.nvim_set_hl(0, ...) end
 
 hi("CursorLineNr", { fg = "none" })
 hi("Search", { bg = "none", fg = "#8d93a1", underline = true })
+hi("DiagnosticUnderlineWarn", { underline = false })

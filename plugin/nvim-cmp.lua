@@ -124,10 +124,10 @@ cmp.setup({
     },
 
     sources = {
-        { name = 'nvim_lsp', priority = 15, keyword_length = 4, max_item_count = 4 },
-        { name = 'luasnip', priority = 5, keyword_length = 3 },
-        { name = 'buffer', priority = 0, keyword_length = 4 },
-        { name = 'path', priority = -5 },
+        { name = 'nvim_lsp', priority = 15, keyword_length = 4 },
+        { name = 'luasnip',  priority = 5,  keyword_length = 3, max_item_count = 3 },
+        { name = 'buffer',   priority = 0,  keyword_length = 4, max_item_count = 3 },
+        { name = 'path',     priority = -5 },
     },
 
     confirm_opts = {
@@ -140,18 +140,18 @@ cmp.setup({
 cmp.setup.filetype("lua", {
     sources = {
         { name = 'nvim_lua', priority = 20 },
-        { name = 'nvim_lsp', priority = 15, keyword_length = 4, max_item_count = 4 },
-        { name = 'buffer', priority = 10 },
-        { name = 'luasnip', priority = 100 },
-        { name = 'path', priority = -5 },
+        { name = 'nvim_lsp', priority = 15, keyword_length = 4 },
+        { name = 'buffer',   priority = 10 },
+        { name = 'luasnip',  priority = 100 },
+        { name = 'path',     priority = -5 },
     }
 })
 
 cmp.setup.filetype("cpp", {
     sources = {
         { name = 'luasnip', priority = 100, keyword_length = 3 },
-        { name = 'buffer', priority = 5, keyword_length = 4 },
-        { name = 'path', priority = -5 },
+        { name = 'buffer',  priority = 5,   keyword_length = 4 },
+        { name = 'path',    priority = -5 },
     }
 })
 
@@ -166,6 +166,6 @@ cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
         { name = 'cmdline', priority = 10 },
-        { name = 'path', keyword_length = 4 },
+        { name = 'path',    keyword_length = 4 },
     }
 })
