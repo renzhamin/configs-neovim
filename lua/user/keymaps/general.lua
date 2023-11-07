@@ -1,8 +1,6 @@
 local ks = vim.keymap.set
 local silent = { silent = true }
 
-ks('n', '<Leader>ss', ":w | source %<CR>", { silent = true, desc = "source file" })
-
 ks('', '<M-e>', ':NvimTreeToggle<CR>')
 
 -- Copying to the system clipboard
@@ -10,9 +8,15 @@ ks('v', '<C-c>', '"+y')
 
 ks('t', '<Esc>', '<C-\\><C-n>')
 
--- Search and replace
-ks('', '<Leader>sr', ':s///g' .. string.rep('<Left>', 3))
-ks('', '<leader>sw', ':%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>')
+-- Sed
+ks('', '<Leader>sr', ':s///g<Left><Left><Left>', { desc = "search and replace" })
+ks('', '<Leader>sR', ':%s///g<Left><Left><Left>', { desc = "search and replace %" })
+ks('', '<leader>sw', ':s/<C-r><C-w>/<C-r><C-w>/g<Left><Left><Left>', { desc = "replace current word" })
+ks('', '<leader>sW', ':%s/<C-r><C-w>/<C-r><C-w>/g<Left><Left><Left>', { desc = "replace current word %" })
+ks('', '<leader>sc', ':s/<C-r><C-0>/<C-r><C-0>/g<Left><Left><Left>', { desc = "replace current clipboard" })
+ks('', '<leader>sC', ':%s/<C-r><C-0>/<C-r><C-0>/g<Left><Left><Left>', { desc = "replace current clipboard %" })
+ks('', '<leader>ss', 'y:s/<C-r><C-0>/<C-r><C-0>/g<Left><Left><Left>', { desc = "replace current selection" })
+ks('', '<leader>sS', 'y:s/<C-r><C-0>/<C-r><C-0>/g<Left><Left><Left>', { desc = "replace current selection %" })
 
 
 -- Quiting
