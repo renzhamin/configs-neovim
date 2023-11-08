@@ -11,7 +11,7 @@ end
 
 
 local config = {
-    virtual_text = false,
+    --[[ virtual_text = false, ]]
     -- show signs
     signs = {
         active = signs,
