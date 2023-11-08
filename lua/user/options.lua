@@ -28,7 +28,7 @@ M.vim_options = {
 }
 
 if vim.fn.has('unix') == 1 and vim.fn.executable('zsh') == 1 then
-    M.shell = "zsh"
+    M.vim_options.shell = "zsh"
 end
 
 M.custom_options = {

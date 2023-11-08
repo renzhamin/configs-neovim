@@ -7,6 +7,7 @@ ks('', '<M-e>', ':NvimTreeToggle<CR>')
 ks('v', '<C-c>', '"+y')
 
 ks('t', '<Esc>', '<C-\\><C-n>')
+ks('t', '<M-Esc>', '<C-\\><C-n>')
 
 -- Sed
 ks('', '<Leader>sr', ':s///g<Left><Left><Left>', { desc = "search and replace" })
