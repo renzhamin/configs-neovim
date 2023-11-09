@@ -29,3 +29,7 @@ require("aerial").setup({
         max_width = .3
     }
 })
+
+require("yanky").setup()
+
+require("user.keymaps.yanky")

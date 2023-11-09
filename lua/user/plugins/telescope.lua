@@ -4,6 +4,8 @@ local config = {
 
     defaults = {
 
+        dynamic_preview_title = true,
+
         layout_config = {
             preview_cutoff = 50,
         },

@@ -59,8 +59,11 @@ return packer.startup(function(use)
     }
 
     use "windwp/nvim-autopairs"
-    use "p00f/nvim-ts-rainbow"
     use "windwp/nvim-ts-autotag"
+    use {
+        "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
+        as = "rainbow-delimiters"
+    }
     use "JoosepAlviste/nvim-ts-context-commentstring"
 
     -- snippet engine
@@ -122,6 +125,7 @@ return packer.startup(function(use)
 
     use "stevearc/aerial.nvim"
 
+    use "gbprod/yanky.nvim"
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
