@@ -16,13 +16,12 @@ local general = {
     {
         "nvim-tree/nvim-tree.lua",
         lazy = true,
-        config = function()
-            require("nvim-tree").setup({
-                view = {
-                    relativenumber = true,
-                },
-            })
-        end
+        opts = {
+            view = {
+                relativenumber = true,
+            },
+
+        },
     },
     "nvim-lua/plenary.nvim",
 
@@ -49,15 +48,43 @@ local general = {
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
 
-    "folke/which-key.nvim",
+    {
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup {
+                plugins = {
+                    marks = false,
+                    registers = false,
+                }
+            }
+        end
+    },
 
-    "zbirenbaum/copilot.lua",
+    {
+        "zbirenbaum/copilot.lua",
+        lazy = true
+    },
 
     "ThePrimeagen/harpoon",
 
-    "stevearc/aerial.nvim",
+    {
+        "stevearc/aerial.nvim",
+        lazy = true,
+        opts = {
+            layout = {
+                max_width = .3
+            }
 
-    "gbprod/yanky.nvim"
+        }
+    },
+
+    {
+        "gbprod/yanky.nvim",
+        config = function()
+            require("yanky").setup()
+            require("user.keymaps.yanky")
+        end
+    }
 }
 
 local treesitter = require("user.lazy.treesitter")

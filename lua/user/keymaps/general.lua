@@ -6,7 +6,9 @@ ks('', '<M-e>',
         require("nvim-tree.api").tree.toggle()
     end
 )
-ks('', '<M-a>', ':AerialToggle left<CR>')
+ks('', '<M-a>', function()
+    require("aerial").toggle({ direction = "left" })
+end)
 
 -- Copying to the system clipboard
 ks('v', '<C-c>', '"+y')
