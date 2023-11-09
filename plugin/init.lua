@@ -23,3 +23,9 @@ require("nvim-tree").setup({
         relativenumber = true,
     },
 })
+
+require("aerial").setup({
+    layout = {
+        max_width = .3
+    }
+})

@@ -2,6 +2,7 @@ local ks = vim.keymap.set
 local silent = { silent = true }
 
 ks('', '<M-e>', ':NvimTreeToggle<CR>')
+ks('', '<M-a>', ':AerialToggle left<CR>')
 
 -- Copying to the system clipboard
 ks('v', '<C-c>', '"+y')
