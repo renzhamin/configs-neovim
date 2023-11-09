@@ -1,7 +1,11 @@
 local ks = vim.keymap.set
 local silent = { silent = true }
 
-ks('', '<M-e>', ':NvimTreeToggle<CR>')
+ks('', '<M-e>',
+    function()
+        require("nvim-tree.api").tree.toggle()
+    end
+)
 ks('', '<M-a>', ':AerialToggle left<CR>')
 
 -- Copying to the system clipboard

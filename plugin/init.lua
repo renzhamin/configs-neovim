@@ -6,9 +6,6 @@ for k, v in pairs(options) do
     opt[k] = v
 end
 
-vim.g.loaded_netrw       = 1
-vim.g.loaded_netrwPlugin = 1
-
 require("user")
 
 require("which-key").setup {
@@ -17,12 +14,6 @@ require("which-key").setup {
         registers = false,
     }
 }
-
-require("nvim-tree").setup({
-    view = {
-        relativenumber = true,
-    },
-})
 
 require("aerial").setup({
     layout = {
