@@ -19,12 +19,12 @@ ks('t', '<M-Esc>', '<C-\\><C-n>')
 -- Sed
 ks('', '<Leader>sr', ':s///g<Left><Left><Left>', { desc = "search and replace" })
 ks('', '<Leader>sR', ':%s///g<Left><Left><Left>', { desc = "search and replace %" })
-ks('', '<leader>sw', ':s/<C-r><C-w>/<C-r><C-w>/g<Left><Left><Left>', { desc = "replace current word" })
-ks('', '<leader>sW', ':%s/<C-r><C-w>/<C-r><C-w>/g<Left><Left><Left>', { desc = "replace current word %" })
-ks('', '<leader>sc', ':s/<C-r><C-0>/<C-r><C-0>/g<Left><Left><Left>', { desc = "replace current clipboard" })
-ks('', '<leader>sC', ':%s/<C-r><C-0>/<C-r><C-0>/g<Left><Left><Left>', { desc = "replace current clipboard %" })
-ks('', '<leader>ss', 'y:s/<C-r><C-0>/<C-r><C-0>/g<Left><Left><Left>', { desc = "replace current selection" })
-ks('', '<leader>sS', 'y:s/<C-r><C-0>/<C-r><C-0>/g<Left><Left><Left>', { desc = "replace current selection %" })
+ks('', '<leader>sw', ':s/<C-r><C-w>/<C-r><C-w>/g<Left><Left>', { desc = "replace current word" })
+ks('', '<leader>sW', ':%s/<C-r><C-w>/<C-r><C-w>/g<Left><Left>', { desc = "replace current word %" })
+ks('', '<leader>sc', ':s/<C-r><C-0>/<C-r><C-0>/g<Left><Left>', { desc = "replace current clipboard" })
+ks('', '<leader>sC', ':%s/<C-r><C-0>/<C-r><C-0>/g<Left><Left>', { desc = "replace current clipboard %" })
+ks('', '<leader>ss', 'y:s/<C-r><C-0>/<C-r><C-0>/g<Left><Left>', { desc = "replace current selection" })
+ks('', '<leader>sS', 'y:s/<C-r><C-0>/<C-r><C-0>/g<Left><Left>', { desc = "replace current selection %" })
 
 
 -- Quiting
