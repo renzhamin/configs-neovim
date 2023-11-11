@@ -1,18 +1,16 @@
 local ks = vim.keymap.set
 local silent = { silent = true }
 
-ks('', '<M-e>',
-    function()
-        require("nvim-tree.api").tree.toggle()
-    end
-)
+ks('', '<M-e>', ':NvimTreeToggle<CR>', silent)
 ks('', '<M-a>', function()
     require("aerial").toggle({ direction = "left" })
 end)
 
 -- Copying to the system clipboard
 ks('v', '<C-c>', '"+y')
+ks('v', '<C-x>', '"+ygvd')
 
+-- Esc to get in normal mode
 ks('t', '<Esc>', '<C-\\><C-n>')
 ks('t', '<M-Esc>', '<C-\\><C-n>')
 

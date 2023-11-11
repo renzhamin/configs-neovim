@@ -15,13 +15,13 @@ vim.opt.rtp:prepend(lazypath)
 local general = {
     {
         "nvim-tree/nvim-tree.lua",
-        lazy = true,
-        opts = {
-            view = {
-                relativenumber = true,
-            },
-
-        },
+        config = function()
+            require("nvim-tree").setup({
+                view = {
+                    relativenumber = true,
+                },
+            })
+        end
     },
     "nvim-lua/plenary.nvim",
 
