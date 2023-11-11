@@ -1,4 +1,2 @@
-plugged
-plugin/packer_compiled.lua
+lazy-lock.json
 test*.lua
-.netrwhist
