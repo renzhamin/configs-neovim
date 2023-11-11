@@ -87,21 +87,21 @@ local general = {
             require("yanky").setup()
             require("user.keymaps.yanky")
         end
-    }
+    },
 }
 
 local treesitter = require("user.lazy.treesitter")
 local cmp = require("user.lazy.cmp")
 local lsp = require("user.lazy.lsp")
 local dap = require("user.lazy.dap")
+local gs = require("user.lazy.gitsigns")
 
-local all_plugins = { general, treesitter, cmp, lsp, dap }
+local all_plugins = { general, treesitter, cmp, lsp, dap, gs }
 
 local plugins = {}
 
 for _, p in ipairs(all_plugins) do
     table.insert(plugins, p)
 end
-
 
 require("lazy").setup(plugins)
