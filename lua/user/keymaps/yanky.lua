@@ -8,3 +8,9 @@ ks({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 
 ks("n", "<c-n>", "<Plug>(YankyCycleForward)")
 ks("n", "<c-p>", "<Plug>(YankyCycleBackward)")
+
+ks("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)")
+ks("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)")
+
+ks("n", "=p", "<Plug>(YankyPutAfterFilter)")
+ks("n", "=P", "<Plug>(YankyPutBeforeFilter)")
