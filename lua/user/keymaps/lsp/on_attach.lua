@@ -26,15 +26,15 @@ local function lsp_keymaps(bufnr)
         { desc = "toggle completion" })
 
     ks('n', '<Leader>lgD', lsp_buf.declaration, desc("declaration"))
-    ks('n', '<Leader>lgd', lsp_buf.definition, desc("definition"))
-    ks('n', '<Leader>lgi', lsp_buf.implementation, desc("implementation"))
-    ks('n', '<Leader>lgt', lsp_buf.type_definition, desc("typedef"))
-    ks('n', '<Leader>lgr', ts.lsp_references, desc("references"))
+    ks('n', '<Leader>lgd', ts.lsp_definitions, desc("definition"))
+    ks('n', '<Leader>lgi', ts.lsp_implementations, desc("implementation"))
+    ks('n', '<Leader>lgt', ts.lsp_type_definitions, desc("typedef"))
+    ks('n', '<Leader>lR', ts.lsp_references, desc("references"))
 
     ks('n', '<Leader>lh', lsp_buf.hover, desc("hover"))
     ks('n', '<Leader>ls', lsp_buf.signature_help, desc("signature"))
 
-    ks('n', '<Leader>lR', lsp_buf.rename, desc("rename"))
+    ks('n', '<Leader>lr', lsp_buf.rename, desc("rename"))
 
     ks({ 'n', 'v' }, '<Leader>lc', lsp_buf.code_action, desc("show code action"))
     ks({ 'n' }, '<Leader>lca',

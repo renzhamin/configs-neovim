@@ -16,9 +16,6 @@ wk.register({
         s = {
             name = "Sed"
         },
-        l = {
-            name = "LSP"
-        },
         t = {
             name = "Telescope",
         },
