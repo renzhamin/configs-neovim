@@ -14,3 +14,7 @@ ks("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)")
 
 ks("n", "=p", "<Plug>(YankyPutAfterFilter)")
 ks("n", "=P", "<Plug>(YankyPutBeforeFilter)")
+
+-- Paste from system clipboard
+ks("n", "<Leader>p", '"+<Plug>(YankyPutAfterFilter)')
+ks("n", "<Leader>P", '"+<Plug>(YankyPutBeforeFilter)')
