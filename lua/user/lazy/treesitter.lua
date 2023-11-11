@@ -11,5 +11,6 @@ return {
         url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
         name = "rainbow-delimiters",
     },
-    "JoosepAlviste/nvim-ts-context-commentstring"
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    "nvim-treesitter/nvim-treesitter-context"
 }
