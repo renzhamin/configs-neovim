@@ -2,9 +2,6 @@ local ks = vim.keymap.set
 local silent = { silent = true }
 
 ks('', '<M-e>', ':NvimTreeToggle<CR>', silent)
-ks('', '<M-a>', function()
-    require("aerial").toggle({ direction = "left" })
-end)
 
 -- Copying to the system clipboard
 ks('v', '<C-c>', '"+y')

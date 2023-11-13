@@ -47,8 +47,10 @@ local general = {
     {
         "nvim-telescope/telescope.nvim",
         branch = '0.1.x',
+        dependencies = {
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        }
     },
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
 
     {
@@ -68,7 +70,11 @@ local general = {
         lazy = true
     },
 
-    "ThePrimeagen/harpoon",
+    {
+        "ThePrimeagen/harpoon",
+        lazy = true,
+        keys = require("user.keymaps.harpoon")
+    },
 
     {
         "stevearc/aerial.nvim",
@@ -78,6 +84,15 @@ local general = {
                 max_width = .3
             }
 
+        },
+        keys = {
+            {
+                '<M-a>',
+                function()
+                    require("aerial").toggle({ direction = "left" })
+                end,
+                desc = { "Aerial view" }
+            }
         }
     },
 
