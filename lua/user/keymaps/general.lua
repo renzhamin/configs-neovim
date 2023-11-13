@@ -1,7 +1,9 @@
 local ks = vim.keymap.set
 local silent = { silent = true }
 
-ks('', '<M-e>', ':NvimTreeToggle<CR>', silent)
+ks('', '<M-e>', function()
+    require("nvim-tree.api").tree.toggle()
+end, silent)
 
 -- Copying to the system clipboard
 ks('v', '<C-c>', '"+y')

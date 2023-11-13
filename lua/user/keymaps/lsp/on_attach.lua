@@ -1,10 +1,14 @@
 local ks = vim.keymap.set
 local lsp_buf = vim.lsp.buf
-local ts = require("telescope.builtin")
-local wk = require("which-key")
 
+local function telescope(func_name)
+    local ts = require("telescope.builtin")
+    return ts[func_name]
+end
 
 local function lsp_keymaps(bufnr)
+    local wk = require("which-key")
+
     wk.register({
         name = "LSP",
         g = {
@@ -22,14 +26,24 @@ local function lsp_keymaps(bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    ks('n', '<Leader>ltc', require("user.utils.completion").toggle_lsp,
-        { desc = "toggle completion" })
+    ks('n', '<Leader>ltc',
+        function()
+            require("user.utils.completion").toggle_lsp()
+        end, { desc = "toggle completion" })
 
     ks('n', '<Leader>lgD', lsp_buf.declaration, desc("declaration"))
-    ks('n', '<Leader>lgd', ts.lsp_definitions, desc("definition"))
-    ks('n', '<Leader>lgi', ts.lsp_implementations, desc("implementation"))
-    ks('n', '<Leader>lgt', ts.lsp_type_definitions, desc("typedef"))
-    ks('n', '<Leader>lR', ts.lsp_references, desc("references"))
+
+    ks('n', '<Leader>lgd',
+        telescope("lsp_definitions"), desc("definition"))
+
+    ks('n', '<Leader>lgi',
+        telescope("lsp_implementations"), desc("implementation"))
+
+    ks('n', '<Leader>lgt',
+        telescope("lsp_type_definitions"), desc("typedef"))
+
+    ks('n', '<Leader>lR',
+        telescope("lsp_references"), desc("references"))
 
     ks('n', '<Leader>lh', lsp_buf.hover, desc("hover"))
     ks('n', '<Leader>ls', lsp_buf.signature_help, desc("signature"))
