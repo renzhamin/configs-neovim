@@ -127,10 +127,10 @@ local general = {
 local treesitter = require("user.lazy.treesitter")
 local cmp = require("user.lazy.completion")
 local lsp = require("user.lazy.lsp")
-local dap = require("user.lazy.dap")
+--[[ local dap = require("user.lazy.dap") ]]
 local gs = require("user.lazy.gitsigns")
 
-local all_plugins = { general, treesitter, cmp, lsp, dap, gs }
+local all_plugins = { general, treesitter, cmp, lsp, gs }
 
 local plugins = {}
 
