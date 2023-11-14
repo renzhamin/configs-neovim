@@ -122,6 +122,24 @@ local general = {
             require("user.keymaps.yanky")
         end
     },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        opts = {
+            indent = {
+                char = "│",
+                tab_char = "│",
+            },
+            exclude = {
+                filetypes = {
+                    "help",
+                    "lazy",
+                    "mason",
+                    "NvimTree",
+                },
+            },
+        },
+        main = "ibl",
+    }
 }
 
 local treesitter = require("user.lazy.treesitter")
