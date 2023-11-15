@@ -163,7 +163,7 @@ local function setup()
 
     local autopairs = require("nvim-autopairs")
 
-    autopairs.setup(require("user.plugins.autopairs"))
+    autopairs.setup(require("user.config.autopairs"))
 
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 

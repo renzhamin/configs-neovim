@@ -1,18 +1,4 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
-end
-vim.opt.rtp:prepend(lazypath)
-
-
-local general = {
+return {
     {
         "nvim-tree/nvim-tree.lua",
         lazy = true,
@@ -58,7 +44,7 @@ local general = {
     {
         "numToStr/Comment.nvim",
         event = "VeryLazy",
-        opts = require("user.plugins.comment")
+        opts = require("user.config.comment")
     },
 
     {
@@ -77,7 +63,7 @@ local general = {
         keys = require("user.keymaps.telescope"),
         config = function()
             local ts = require("telescope")
-            ts.setup(require("user.plugins.telescope"))
+            ts.setup(require("user.config.telescope"))
             ts.load_extension('fzf')
             ts.load_extension('yank_history')
         end,
@@ -89,7 +75,6 @@ local general = {
 
     {
         "folke/which-key.nvim",
-        lazy = true,
         config = function()
             require("which-key").setup {
                 plugins = {
@@ -158,42 +143,3 @@ local general = {
         main = "ibl",
     }
 }
-
-local treesitter = require("user.lazy.treesitter")
-local cmp = require("user.lazy.completion")
-local lsp = require("user.lazy.lsp")
---[[ local dap = require("user.lazy.dap") ]]
-local gs = require("user.lazy.gitsigns")
-
-local all_plugins = { general, treesitter, cmp, lsp, gs }
-
-local plugins = {}
-
-for _, p in ipairs(all_plugins) do
-    table.insert(plugins, p)
-end
-
-require("lazy").setup(plugins, {
-    changed_detection = {
-        enabled = false
-    },
-    performance = {
-        cache = {
-            enabled = true,
-        },
-        reset_packpath = true, -- reset the package path to improve startup time
-        rtp = {
-            reset = true,      -- reset the runtime path to $VIMRUNTIME and your config directory
-            disabled_plugins = {
-                "gzip",
-                "matchit",
-                "matchparen",
-                "netrwPlugin",
-                "tarPlugin",
-                "tohtml",
-                "tutor",
-                "zipPlugin",
-            },
-        },
-    },
-})

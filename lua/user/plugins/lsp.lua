@@ -2,7 +2,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         lazy = true,
-        event = { "BufReadPre", "BufNewFile" },
+        event = { "BufReadPost", "BufNewFile" },
         config = require("user.lsp.setup"),
         dependencies = {
             "williamboman/mason.nvim",
@@ -12,7 +12,7 @@ return {
                 "nvimtools/none-ls.nvim",
                 config = function()
                     local null_ls = require("null-ls")
-                    local args = require("user.plugins.null-ls")
+                    local args = require("user.config.null-ls")
                     local format_sources = require("user.formatting").sources
 
                     args.sources = args.sources or {}

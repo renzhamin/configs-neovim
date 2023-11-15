@@ -1,10 +1,8 @@
-vim.g.gruvbox_material_better_performance = 1
-vim.cmd("colorscheme gruvbox-material")
+local opt = vim.opt
+local options = require("user.options").vim_options
 
-local hi = function(...) vim.api.nvim_set_hl(0, ...) end
-
-hi("CursorLineNr", { fg = "none" })
-hi("Search", { bg = "none", fg = "#8d93a1", underline = true })
---[[ hi("DiagnosticUnderlineWarn", { underline = false }) ]]
+for k, v in pairs(options) do
+    opt[k] = v
+end
 
 require("user.keymaps")

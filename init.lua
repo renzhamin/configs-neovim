@@ -1,9 +1,6 @@
-vim.g.mapleader          = ','
+vim.g.mapleader = ','
 
-vim.g.loaded_netrw       = 1
-vim.g.loaded_netrwPlugin = 1
-
-local create_autocmd     = vim.api.nvim_create_autocmd
+local create_autocmd = vim.api.nvim_create_autocmd
 
 create_autocmd("FocusGained", {
     pattern = "*",
@@ -16,13 +13,4 @@ create_autocmd("VimLeave", {
 })
 
 require("user.lazy")
-
-local opt = vim.opt
-local options = require("user.options").vim_options
-
-
-for k, v in pairs(options) do
-    opt[k] = v
-end
-
 require("user")
