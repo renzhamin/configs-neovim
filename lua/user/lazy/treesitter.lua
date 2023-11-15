@@ -1,5 +1,6 @@
 return {
     'nvim-treesitter/nvim-treesitter',
+    event = "VeryLazy",
     opts = require("user.plugins.treesitter"),
     config = function()
         require("nvim-treesitter.configs").

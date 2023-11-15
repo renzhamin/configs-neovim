@@ -44,11 +44,13 @@ local general = {
 
     {
         "numToStr/Comment.nvim",
+        event = "VeryLazy",
         opts = require("user.plugins.comment")
     },
 
     {
         "kylechui/nvim-surround",
+        event = "VeryLazy",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         config = function()
             require("nvim-surround").setup()
@@ -74,6 +76,7 @@ local general = {
 
     {
         "folke/which-key.nvim",
+        lazy = true,
         config = function()
             require("which-key").setup {
                 plugins = {
@@ -117,6 +120,7 @@ local general = {
 
     {
         "gbprod/yanky.nvim",
+        event = "VeryLazy",
         config = function()
             require("yanky").setup()
             require("user.keymaps.yanky")
