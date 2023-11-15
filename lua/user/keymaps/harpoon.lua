@@ -11,8 +11,9 @@ local function setup()
 
     ks('n', 'a', mark.add_file, { desc = "add current file" })
     ks('n', 'r', mark.rm_file, { desc = "remove current file" })
-    ks('n', 'q', ui.toggle_quick_menu, { desc = "quick menu" })
 
+    ks('n', 'q', ui.toggle_quick_menu, { desc = { "quick menu" } })
+    ks('n', '.', ui.nav_prev, { desc = "previous marked file" })
     ks('n', ',', ui.nav_next, { desc = "next marked file" })
     ks('n', '.', ui.nav_prev, { desc = "previous marked file" })
 

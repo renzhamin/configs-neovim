@@ -20,7 +20,20 @@ local general = {
             require("nvim-tree").setup({
                 view = {
                     relativenumber = true,
+                    width = {
+                        max = "40%"
+                    },
                 },
+                update_focused_file = {
+                    enable = true,
+                    update_root = true,
+                },
+                diagnostics = {
+                    enable = true,
+                },
+                filters = {
+                    custom = { "^.git$" }
+                }
             })
         end,
         init = function()
