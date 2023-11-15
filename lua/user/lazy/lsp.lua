@@ -9,7 +9,7 @@ return {
             "williamboman/mason-lspconfig.nvim",
             "ray-x/lsp_signature.nvim",
             {
-                "jose-elias-alvarez/null-ls.nvim",
+                "nvimtools/none-ls.nvim",
                 config = function()
                     local null_ls = require("null-ls")
                     local args = require("user.plugins.null-ls")
