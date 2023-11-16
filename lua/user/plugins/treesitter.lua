@@ -18,6 +18,18 @@ return {
             end
         },
         "JoosepAlviste/nvim-ts-context-commentstring",
-        "nvim-treesitter/nvim-treesitter-context"
+        {
+            "nvim-treesitter/nvim-treesitter-context",
+            keys = {
+                {
+                    '[-',
+                    function()
+                        require("treesitter-context").go_to_context()
+                    end,
+                    mode = 'n',
+                    desc = "go to context"
+                }
+            }
+        }
     }
 }

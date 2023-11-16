@@ -62,32 +62,44 @@ local config = {
                 ['if'] = '@function.inner',
                 ['ac'] = '@class.outer',
                 ['ic'] = '@class.inner',
+                ['as'] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
             },
+        },
+        selection_modes = {
+            ['@parameter.outer'] = 'v', -- charwise
+            ['@function.outer'] = 'V',  -- linewise
+            ['@class.outer'] = '<c-v>', -- blockwise
         },
         move = {
             enable = true,
             set_jumps = true, -- whether to set jumps in the jumplist
             goto_next_start = {
-                [']m'] = '@function.outer',
-                [']]'] = '@class.outer',
+                [']f'] = '@function.outer',
+                [']c'] = '@class.outer',
+                [']s'] = { query = "@scope", query_group = "locals", desc = "Next scope start" },
+                [']l'] = '@loop.outer',
             },
             goto_next_end = {
-                [']M'] = '@function.outer',
-                [']['] = '@class.outer',
+                [']F'] = '@function.outer',
+                [']C'] = '@class.outer',
+                [']S'] = { query = "@scope", query_group = "locals", desc = "Next scope end" },
             },
             goto_previous_start = {
-                ['[m'] = '@function.outer',
-                ['[['] = '@class.outer',
+                ['[f'] = '@function.outer',
+                ['[c'] = '@class.outer',
+                ['[s'] = { query = "@scope", query_group = "locals", desc = "Previous scope start" },
+                ['[l'] = '@loop.outer',
             },
             goto_previous_end = {
-                ['[M'] = '@function.outer',
-                ['[]'] = '@class.outer',
+                ['[F'] = '@function.outer',
+                ['[C'] = '@class.outer',
+                ['[S'] = { query = "@scope", query_group = "locals", desc = "Previous scope end" },
             },
             goto_next = {
-                ["]c"] = "@conditional.outer",
+                ["]i"] = "@conditional.outer",
             },
             goto_previous = {
-                ["[c"] = "@conditional.outer",
+                ["[i"] = "@conditional.outer",
             },
         },
         lsp_interop = {
@@ -97,15 +109,6 @@ local config = {
             peek_definition_code = {
                 ["<leader>df"] = "@function.outer",
                 ["<leader>dF"] = "@class.outer",
-            },
-        },
-        swap = {
-            enable = true,
-            swap_next = {
-                ['<leader>a'] = '@parameter.inner',
-            },
-            swap_previous = {
-                ['<leader>A'] = '@parameter.inner',
             },
         },
     },

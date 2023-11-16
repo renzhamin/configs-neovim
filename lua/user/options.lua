@@ -21,7 +21,7 @@ M.vim_options = {
 
     equalalways = false,
 
-    statusline = "%M %r %f %= [%{getcwd()}] [%n] %p%%",
+    statusline = "%M %r %f %= [%n] %p%%",
 
     winminwidth = 0,
     winminheight = 0,
