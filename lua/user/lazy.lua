@@ -12,20 +12,46 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 
-local hi = function(...) vim.api.nvim_set_hl(0, ...) end
-
 require("lazy").setup({
     spec = {
         {
             "sainnhe/gruvbox-material",
+            config = false,
+            --[[ priority = 1000, ]]
+            --[[ config = function() ]]
+            --[[     local hi = function(...) vim.api.nvim_set_hl(0, ...) end ]]
+            --[[     vim.g.gruvbox_material_better_performance = 1 ]]
+            --[[]]
+            --[[     vim.cmd("colorscheme gruvbox-material") ]]
+            --[[]]
+            --[[     hi("CursorLineNr", { fg = "none" }) ]]
+            --[[     hi("Search", { bg = "none", fg = "#8d93a1", underline = true }) ]]
+            --[[ end, ]]
+        },
+        {
+            "rebelot/kanagawa.nvim",
             priority = 1000,
             config = function()
-                vim.g.gruvbox_material_better_performance = 1
+                require('kanagawa').setup({
+                    compile = true,
+                    colors = {
+                        theme = {
+                            all = {
+                                ui = {
+                                    bg_gutter = "none",
+                                }
+                            }
+                        }
+                    },
+                    overrides = function()
+                        return {
+                            Search = { bg = "none", underline = true },
+                        }
+                    end,
+                    theme = "wave",
+                })
 
-                vim.cmd [[colorscheme gruvbox-material]]
-
-                hi("CursorLineNr", { fg = "none" })
-                hi("Search", { bg = "none", fg = "#8d93a1", underline = true })
+                require("kanagawa").load("wave")
             end
         },
         { import = "user.plugins" }

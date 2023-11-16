@@ -1,15 +1,16 @@
 local M = {}
 
+local hl_normal = vim.api.nvim_get_hl(0, { name = "Normal" })
+
 M.toggle_transparency = function()
-    local cur_value = vim.g.gruvbox_material_transparent_background or 0
+    local cur_normal = vim.api.nvim_get_hl(0, { name = "Normal" })
 
-    if cur_value == 0 then
-        vim.g.gruvbox_material_transparent_background = 2
+    if cur_normal.bg then
+        hl_normal = cur_normal
+        vim.cmd("hi Normal guibg=none")
     else
-        vim.g.gruvbox_material_transparent_background = 0
+        vim.api.nvim_set_hl(0, "Normal", hl_normal)
     end
-
-    vim.cmd("colorscheme gruvbox-material")
 end
 
 
