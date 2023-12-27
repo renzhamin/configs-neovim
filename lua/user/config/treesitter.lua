@@ -62,6 +62,8 @@ local config = {
                 ['if'] = '@function.inner',
                 ['ac'] = '@class.outer',
                 ['ic'] = '@class.inner',
+                ['ii'] = '@conditional.inner',
+                ['ai'] = '@conditional.outer',
                 ['as'] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
             },
         },
