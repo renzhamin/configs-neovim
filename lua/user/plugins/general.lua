@@ -87,7 +87,10 @@ return {
 
     {
         "zbirenbaum/copilot.lua",
-        lazy = true
+        lazy = true,
+        keys = {
+            { "<Leader>ec", function() require("copilot").setup() end }
+        },
     },
 
     {
