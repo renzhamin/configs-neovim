@@ -3,13 +3,14 @@ local M = {}
 -- disable formatting for these language servers
 M.dont_format = {
     "tsserver",
+    "jsonls"
 }
 
 -- null-ls builtin formatting sources
 M.sources = {
     {
         name = "prettierd",
-        disabled_filetypes = { "json", "jsonc" },
+        --[[ disabled_filetypes = { "json", "jsonc" }, ]]
         extra_args = {
             "--no-semi",
             "--tab-width=4",
