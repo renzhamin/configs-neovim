@@ -3,18 +3,21 @@ local M = {}
 -- disable formatting for these language servers
 M.dont_format = {
     "tsserver",
-    "jsonls"
+    "jsonls",
+    "prismals",
 }
 
 -- null-ls builtin formatting sources
 M.sources = {
     {
         name = "prettierd",
-        --[[ disabled_filetypes = { "json", "jsonc" }, ]]
-        extra_args = {
-            "--no-semi",
-            "--tab-width=4",
-            "--config-precedence=prefer-file"
+        args = {
+            extra_filetypes = { "prisma" },
+            extra_args = {
+                "--no-semi",
+                "--tab-width=4",
+                "--config-precedence=prefer-file"
+            }
         }
     }
 }

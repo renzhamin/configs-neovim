@@ -18,11 +18,8 @@ return {
                     args.sources = args.sources or {}
 
                     for _, source in ipairs(format_sources) do
-                        table.insert(args.sources, null_ls.builtins.formatting[source.name].with({
-                            filetypes = source.filetypes,
-                            disabled_filetypes = source.disabled_filetypes,
-                            extra_args = source.extra_args,
-                        }))
+                        table.insert(args.sources,
+                            null_ls.builtins.formatting[source.name].with(source.args))
                     end
                     null_ls.setup(args)
                 end
