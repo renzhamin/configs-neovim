@@ -114,7 +114,7 @@ return {
                 function()
                     require("aerial").toggle({ direction = "left" })
                 end,
-                desc = { "Aerial view" }
+                desc = "Aerial view"
             }
         }
     },
