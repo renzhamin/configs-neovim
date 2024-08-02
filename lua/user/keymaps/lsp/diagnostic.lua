@@ -1,16 +1,21 @@
 local ks = vim.keymap.set
 local dg = vim.diagnostic
 
-ks('n', '<Leader>de', function() dg.enable() end, { desc = "enable" })
-ks('n', '<Leader>dd', function() dg.disable() end, { desc = "disable" })
-ks('n', '<Leader>dbe', function() dg.enable(0) end, { desc = "enable [buffer]" })
-ks('n', '<Leader>dbd', function() dg.disable(0) end, { desc = "disable [buffer]" })
+ks('n', '<Leader>dt',
+    function()
+        vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+    end, { desc = "toggle" })
 
-ks('n', '<Leader>dg', dg.open_float, { desc = "show diagnostic in current Line" })
+ks('n', '<Leader>dbt',
+    function()
+        vim.diagnostic.enable(not vim.diagnostic.is_enabled(), { bufnr = 0 })
+    end, { desc = "toggle [buffer]" })
+
 ks('n', '<Leader>da',
-    function ()
+    function()
         require("telescope.builtin").diagnostics()
     end, { desc = "show all diagnostic" })
+
 ks('n', '[d', dg.goto_prev, { desc = "previous diagnostic" })
 ks('n', ']d', dg.goto_next, { desc = "next diagnostic" })
 ks('n', '<Leader>dq', dg.setloclist)

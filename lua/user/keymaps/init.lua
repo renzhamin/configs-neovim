@@ -8,19 +8,10 @@ require("user.keymaps.telescope")
 
 local wk = require("which-key")
 
-wk.register({
-    ["<Leader>"] = {
-        s = {
-            name = "Sed"
-        },
-        t = {
-            name = "Telescope",
-        },
-        h = {
-            name = "Gitsigns"
-        },
-        [";"] = {
-            name = "Harpoon"
-        }
-    }
+
+wk.add({
+    { "<Leader>;", group = "Harpoon" },
+    { "<Leader>h", group = "Gitsigns" },
+    { "<Leader>s", group = "Sed" },
+    { "<Leader>t", group = "Telescope" },
 })

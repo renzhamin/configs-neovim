@@ -9,14 +9,9 @@ end
 local function lsp_keymaps(bufnr)
     local wk = require("which-key")
 
-    wk.register({
-        name = "LSP",
-        g = {
-            name = "go to",
-        }
-    }, {
-        prefix = "<Leader>l",
-        buffer = bufnr,
+    wk.add({
+        { "<Leader>l",  buffer = bufnr, group = "LSP" },
+        { "<Leader>lg", buffer = bufnr, group = "go to" },
     })
 
     local desc = function(str)
@@ -24,7 +19,7 @@ local function lsp_keymaps(bufnr)
     end
 
     -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    vim.api.nvim_set_option_value('omnifunc', 'v:lua.vim.lsp.omnifunc', { buf = bufnr })
 
     ks('n', '<Leader>ltc',
         function()

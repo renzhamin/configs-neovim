@@ -19,11 +19,11 @@ M.compile = function()
     vim.cmd("silent w!")
 
     local compile_command = runner.compile_command .. " " .. vim.fn.expand("%")
-    local output = vim.api.nvim_exec("!" .. compile_command, true)
+    local output = vim.api.nvim_exec2("!" .. compile_command, { output = true })
 
     ok = vim.v.shell_error == 0
 
-    return ok, output
+    return ok, output.output
 end
 
 local run = function(suffix)
@@ -59,8 +59,8 @@ local run = function(suffix)
 
     vim.api.nvim_set_current_dir(opt.bin_dir)
 
-    output = output .. vim.api.nvim_exec("!" .. run_command, true)
-    vim.notify(output)
+    output = output .. vim.api.nvim_exec2("!" .. run_command, { output = true })
+    vim.notify(output.output)
     vim.cmd("silent cd -")
     vim.cmd("silent w!")
     vim.cmd("%y+")
