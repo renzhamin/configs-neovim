@@ -32,11 +32,9 @@ local function setup()
 
     mason.setup()
     mason_lspconfig.setup()
-    mason_lspconfig.setup_handlers({
-        function(server_name)
-            lspconfig[server_name].setup(get_options(server_name))
-        end
-    })
+    for _, server_name in ipairs(mason_lspconfig.get_installed_servers()) do
+        lspconfig[server_name].setup(get_options(server_name))
+    end
 end
 
 return setup

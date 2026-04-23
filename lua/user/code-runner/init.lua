@@ -59,8 +59,8 @@ local run = function(suffix)
 
     vim.api.nvim_set_current_dir(opt.bin_dir)
 
-    output = output .. vim.api.nvim_exec2("!" .. run_command, { output = true })
-    vim.notify(output.output)
+    output = output .. vim.api.nvim_exec2("!" .. run_command, { output = true }).output
+    vim.notify(output)
     vim.cmd("silent cd -")
     vim.cmd("silent w!")
     vim.cmd("%y+")

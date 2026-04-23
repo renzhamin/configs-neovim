@@ -12,7 +12,7 @@ return {
                     "-Z", "shell-escape" },
                 executable = "tectonic",
                 forwardSearchAfter = false,
-                onSave = false
+                onSave = true
             },
             chktex = {
                 onEdit = false,
