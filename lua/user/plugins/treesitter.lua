@@ -3,7 +3,7 @@ return {
     event = "VeryLazy",
     opts = require("user.config.treesitter"),
     config = function()
-        require("nvim-treesitter.configs").
+        require("nvim-treesitter").
             setup(require("user.config.treesitter"))
     end,
     dependencies = {
