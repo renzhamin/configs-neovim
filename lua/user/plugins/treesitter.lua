@@ -1,13 +1,42 @@
 return {
     'nvim-treesitter/nvim-treesitter',
-    event = "VeryLazy",
-    opts = require("user.config.treesitter"),
-    config = function()
-        require("nvim-treesitter").
-            setup(require("user.config.treesitter"))
-    end,
+    lazy = false,
     dependencies = {
-        'nvim-treesitter/nvim-treesitter-textobjects',
+        {
+            'nvim-treesitter/nvim-treesitter-textobjects',
+            config = function()
+                local function set_select_mapping(key, object)
+                    vim.keymap.set({ "x", "o" }, key, function()
+                        require "nvim-treesitter-textobjects.select".select_textobject(object, "textobjects")
+                    end)
+                end
+
+                set_select_mapping("am", "@function.outer")
+                set_select_mapping("im", "@function.inner")
+                set_select_mapping("ac", "@class.outer")
+                set_select_mapping("ic", "@class.inner")
+
+                local function set_norm_mapping(key, fn)
+                    vim.keymap.set({ "n", "x", "o" }, key, fn)
+                end
+                local function set_goto_mapping(key, object)
+                    set_norm_mapping("]" .. key, function()
+                        require("nvim-treesitter-textobjects.move").goto_next_start(object, "textobjects")
+                    end)
+                    set_norm_mapping("]" .. key:upper(), function()
+                        require("nvim-treesitter-textobjects.move").goto_next_end(object, "textobjects")
+                    end)
+                    set_norm_mapping("[" .. key, function()
+                        require("nvim-treesitter-textobjects.move").goto_previous_start(object, "textobjects")
+                    end)
+                    set_norm_mapping("]" .. key:upper(), function()
+                        require("nvim-treesitter-textobjects.move").goto_previous_end(object, "textobjects")
+                    end)
+                end
+
+                set_goto_mapping('m', '@function.outer')
+            end,
+        },
         "windwp/nvim-autopairs",
         "windwp/nvim-ts-autotag",
         {

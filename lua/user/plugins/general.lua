@@ -58,7 +58,7 @@ return {
 
     {
         "nvim-telescope/telescope.nvim",
-        branch = '0.1.x',
+        version = "*",
         lazy = true,
         keys = require("user.keymaps.telescope"),
         config = function()

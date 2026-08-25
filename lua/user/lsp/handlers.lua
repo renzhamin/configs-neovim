@@ -49,9 +49,9 @@ M.on_attach = function(client, bufnr)
     end
 
 
-    if client.server_capabilities.documentFormattingProvider then
-        formatting.format_on_save(bufnr)
-    end
+    --[[ if client.server_capabilities.documentFormattingProvider then ]]
+    --[[     formatting.format_on_save(bufnr) ]]
+    --[[ end ]]
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

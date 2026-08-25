@@ -5,25 +5,27 @@ return {
         event = { "BufReadPost", "BufNewFile" },
         config = require("user.lsp.setup"),
         dependencies = {
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
+            "mason-org/mason.nvim",
+            "mason-org/mason-lspconfig.nvim",
             "ray-x/lsp_signature.nvim",
             {
-                "nvimtools/none-ls.nvim",
+                'stevearc/conform.nvim',
+                opts = {},
                 config = function()
-                    local null_ls = require("null-ls")
-                    local args = require("user.config.null-ls")
-                    local format_sources = require("user.formatting").sources
-
-                    args.sources = args.sources or {}
-
-                    for _, source in ipairs(format_sources) do
-                        table.insert(args.sources,
-                            null_ls.builtins.formatting[source.name].with(source.args))
-                    end
-                    null_ls.setup(args)
+                    require("conform").setup({
+                        format_on_save = {
+                            timeout_ms = 500,
+                            lsp_format = "fallback",
+                        },
+                        formatters_by_ft = {
+                            lua = { "stylua" },
+                            python = { "isort", "black" },
+                            javascript = { "prettierd", "prettier", stop_after_first = true },
+                            typescript = { "prettierd", "prettier", stop_after_first = true },
+                        },
+                    })
                 end
-            },
+            }
         },
     },
 }

@@ -28,12 +28,12 @@ local function setup()
 
     local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
-    local lspconfig = require("lspconfig")
 
     mason.setup()
     mason_lspconfig.setup()
     for _, server_name in ipairs(mason_lspconfig.get_installed_servers()) do
-        lspconfig[server_name].setup(get_options(server_name))
+        --[[ lspconfig[server_name].setup(get_options(server_name)) ]]
+        vim.lsp.config(server_name, get_options(server_name))
     end
 end
 
